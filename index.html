@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO e Meta Tags -->
+    <title>ExataMente PRO | A Engenharia por trás do Hype</title>
+    <meta name="description" content="Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
+    <meta property="og:title" content="ExataMente PRO">
+    <meta property="og:description" content="A engenharia por trás do Hype. Ciência, física e mecânica aplicada.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+    /* =========================================
+       RESET E ACESSIBILIDADE
+    ========================================= */
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    html{
+        scroll-behavior:smooth;
+    }
+
+    a:focus-visible, .btn-primary:focus-visible, .btn-secondary:focus-visible {
+        outline: 3px solid var(--primary);
+        outline-offset: 4px;
+    }
+
+    :root{
+        --text:#f5f7ff;
+        --text-soft:#c4cce0;
+        --card:rgba(255,255,255,.06);
+        --stroke:rgba(255,255,255,.09);
+        --primary:#5ee7ff;
+        --gradient: linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+    }
+
+    /* =========================================
+       BODY + BACKGROUND
+    ========================================= */
+    body{
+        font-family:'Inter',sans-serif;
+        background:
+        radial-gradient(circle at 20% 20%, rgba(255,60,100,.22), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(90,70,255,.18), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(0,220,255,.12), transparent 30%),
+        linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+        background-attachment:fixed;
+        color:var(--text);
+        overflow-x:hidden;
+        position:relative;
+        min-height:100vh;
+    }
+
+    body::before{
+        content:'';
+        position:fixed;
+        inset:0;
+        background: linear-gradient(to bottom, rgba(8,10,18,.85), rgba(14,18,30,.92));
+        z-index:-3;
+    }
+
+    body::after{
+        content:'';
+        position:fixed;
+        inset:-20%;
+        background: radial-gradient(circle, rgba(255,255,255,.03), transparent 60%);
+        animation:bgMove 20s linear infinite;
+        z-index:-2;
+        pointer-events:none;
+    }
+
+    @keyframes bgMove{
+        0%{ transform:translate(0,0) rotate(0deg); }
+        50%{ transform:translate(-3%,2%) rotate(180deg); }
+        100%{ transform:translate(0,0) rotate(360deg); }
+    }
+
+    /* =========================================
+       DESIGN DAS ENGRENAGENS (ACOPLADAS)
+    ========================================= */
+    .gears-bg{
+        position:fixed;
+        inset:0;
+        overflow:hidden;
+        z-index:-1;
+        pointer-events:none;
+    }
+
+    .gear{
+        position:absolute;
+        will-change: transform; 
+        transform-origin: center center;
+    }
+
+    /* Engrenagem 1: Esquerda */
+    .gear-1{
+        width:450px; 
+        height:450px;
+        left:-120px;
+        top:5%;
+        opacity: 0.7; 
+    }
+
+    /* Engrenagem 2: Direita (Menor, Acoplada) */
+    .gear-2{
+        width:250px;
+        height:250px;
+        right:280px; 
+        top:32%;
+        opacity: 0.5;
+    }
+
+    /* Engrenagem 3: Direita (Maior, Base do Acoplamento) */
+    .gear-3{
+        width:500px; 
+        height:500px;
+        right:-150px;
+        top:15%;
+        opacity: 0.35;
+    }
+
+    /* Engrenagem 4: Solta no fundo */
+    .gear-4{
+        width:200px;
+        height:200px;
+        left:65%;
+        bottom:5%;
+        opacity: 0.4;
+    }
+
+    /* =========================================
+       HEADER
+    ========================================= */
+    header{
+        position:sticky;
+        top:0;
+        z-index:999;
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        background:rgba(20,22,35,.55);
+        border-bottom:1px solid var(--stroke);
+    }
+
+    .header-container{
+        max-width:1200px;
+        margin:auto;
+        padding:1rem 1.2rem;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+    }
+
+    .logo{
+        font-size:1.15rem;
+        font-weight:900;
+        letter-spacing:-0.05em;
+    }
+
+    .logo span{
+        background:var(--gradient);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    .btn-nav{
+        text-decoration:none;
+        color:var(--text);
+        font-size:.88rem;
+        font-weight:700;
+        background:rgba(255,255,255,.06);
+        border:1px solid rgba(255,255,255,.1);
+        padding:.7rem 1rem;
+        border-radius:16px;
+        transition:.25s ease;
+    }
+
+    .btn-nav:hover{
+        transform:translateY(-2px);
+        background:rgba(255,255,255,.1);
+    }
+
+    /* =========================================
+       HERO E COMPONENTES PRINCIPAIS
+    ========================================= */
+    .hero{
+        max-width:1200px;
+        margin:auto;
+        padding:2rem 1.2rem 4rem;
+    }
+
+    .hero-card{
+        position:relative;
+        overflow:hidden;
+        border-radius:36px;
+        background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+        border:1px solid rgba(255,255,255,.1);
+        padding:1.5rem;
+        box-shadow: 0 10px 50px rgba(0,0,0,.25);
+        backdrop-filter:blur(14px);
+    }
+
+    .hero-cover{
+        width:100%;
+        overflow:hidden;
+        border-radius:24px;
+        margin-bottom:2rem;
+    }
+
+    .hero-cover img{
+        width:100%;
+        display:block;
+        object-fit:cover;
+    }
+
+    .badge{
+        display:inline-flex;
+        align-items:center;
+        gap:.5rem;
+        background:rgba(255,255,255,.06);
+        border:1px solid rgba(255,255,255,.08);
+        padding:.55rem .95rem;
+        border-radius:999px;
+        font-size:.78rem;
+        font-weight:700;
+        color:var(--primary);
+        margin-bottom:1.3rem;
+    }
+
+    .hero h1{
+        font-size:clamp(2.3rem, 8vw, 5rem);
+        line-height:.95;
+        font-weight:900;
+        letter-spacing:-0.08em;
+        margin-bottom:1.2rem;
+    }
+
+    .hero h1 span{
+        background:var(--gradient);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    .hero p{
+        max-width:700px;
+        color:var(--text-soft);
+        line-height:1.8;
+        font-size:1rem;
+        margin-bottom:2rem;
+    }
+
+    .metrics{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:1rem;
+        margin-top:2rem;
+    }
+
+    .metric{
+        position:relative;
+        overflow:hidden;
+        background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:26px;
+        padding:1.5rem 1.2rem;
+        backdrop-filter:blur(12px);
+    }
+
+    .metric::before{
+        content:'';
+        position:absolute;
+        inset:0;
+        background: linear-gradient(135deg, rgba(94,231,255,.12), transparent);
+    }
+
+    .metric h2{
+        position:relative;
+        font-size:clamp(1.8rem,5vw,2.8rem);
+        line-height:1;
+        font-weight:900;
+        margin-bottom:.5rem;
+    }
+
+    .metric p{
+        position:relative;
+        color:var(--text-soft);
+        font-size:.9rem;
+        line-height:1.6;
+    }
+
+    .cta-area{
+        display:flex;
+        gap:1rem;
+        margin-top:2rem;
+        flex-wrap:wrap;
+    }
+
+    .btn-primary{
+        flex:1;
+        min-width:220px;
+        text-decoration:none;
+        text-align:center;
+        padding:1rem 1.2rem;
+        border-radius:20px;
+        background:var(--gradient);
+        color:white;
+        font-weight:800;
+        font-size:.98rem;
+        box-shadow: 0 12px 30px rgba(139,31,211,.28);
+        transition:.25s ease;
+    }
+
+    .btn-primary:hover{
+        transform:translateY(-3px);
+    }
+
+    .btn-secondary{
+        flex:1;
+        min-width:220px;
+        text-decoration:none;
+        text-align:center;
+        padding:1rem 1.2rem;
+        border-radius:20px;
+        background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08);
+        color:var(--text);
+        font-weight:700;
+        transition:.25s ease;
+    }
+
+    .btn-secondary:hover{
+        background:rgba(255,255,255,.1);
+    }
+
+    /* =========================================
+       SEÇÕES E CARDS
+    ========================================= */
+    .section{
+        max-width:1200px;
+        margin:auto;
+        padding:0 1.2rem 5rem;
+    }
+
+    .section-title{
+        font-size:clamp(1.8rem,5vw,2.8rem);
+        font-weight:900;
+        letter-spacing:-0.06em;
+        margin-bottom:2rem;
+    }
+
+    .section-title span{
+        color:var(--primary);
+    }
+
+    .grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:1.2rem;
+    }
+
+    .card{
+        background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:30px;
+        overflow:hidden;
+        backdrop-filter:blur(14px);
+        transition:.3s ease;
+    }
+
+    .card:hover{
+        transform:translateY(-5px);
+        border-color:rgba(94,231,255,.25);
+    }
+
+    .card-top{
+        height:160px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:3rem;
+        background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+
+    .card-body{
+        padding:1.5rem;
+    }
+
+    .tag{
+        display:inline-block;
+        padding:.45rem .8rem;
+        border-radius:999px;
+        background:rgba(94,231,255,.12);
+        color:var(--primary);
+        font-size:.72rem;
+        font-weight:700;
+        margin-bottom:1rem;
+    }
+
+    .card h3{
+        font-size:1.3rem;
+        font-weight:800;
+        margin-bottom:.8rem;
+    }
+
+    .card p{
+        color:var(--text-soft);
+        line-height:1.7;
+        font-size:.95rem;
+        margin-bottom:1.3rem;
+    }
+
+    .features{
+        list-style:none;
+        display:flex;
+        flex-direction:column;
+        gap:.7rem;
+    }
+
+    .features li{
+        color:#dce5f5;
+        font-size:.92rem;
+        line-height:1.6;
+    }
+
+    .manifesto{
+        margin-top:4rem;
+        padding:2rem;
+        border-radius:34px;
+        background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+        border:1px solid rgba(255,255,255,.08);
+        backdrop-filter:blur(14px);
+    }
+
+    .manifesto h2{
+        font-size:2rem;
+        font-weight:900;
+        letter-spacing:-0.05em;
+        margin-bottom:1rem;
+    }
+
+    .manifesto p{
+        color:var(--text-soft);
+        line-height:1.9;
+        font-size:1rem;
+    }
+
+    .manifesto strong{
+        color:var(--primary);
+    }
+
+    footer{
+        margin-top:5rem;
+        padding:3rem 1.2rem;
+        text-align:center;
+        border-top:1px solid rgba(255,255,255,.08);
+        color:var(--text-soft);
+        font-size:.85rem;
+    }
+
+    /* RESPONSIVIDADE */
+    @media(max-width:768px){
+        .hero{ padding-top:1rem; }
+        .hero-card{ padding:1.2rem; border-radius:30px; }
+        .metrics{ grid-template-columns:1fr; }
+        .cta-area{ flex-direction:column; }
+        .hero p{ font-size:.96rem; }
+        
+        /* Acoplamento ajustado para telas mobile */
+        .gear-1{ width:250px; height:250px; left:-80px; }
+        .gear-2{ width:150px; height:150px; right: 140px; top: 25%; }
+        .gear-3{ width:350px; height:350px; right:-100px; top: 12%; }
+        .gear-4{ width:120px; height:120px; left:60%; }
+    }
+    </style>
+</head>
+<body>
+
+    <div class="gears-bg">
+        <!-- Definições Globais de Design (Gradientes e Filtros) -->
+        <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
+            <defs>
+                <linearGradient id="gearGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#315cff" stop-opacity="0.3"></stop>
+                    <stop offset="50%" stop-color="#5ee7ff" stop-opacity="0.2"></stop>
+                    <stop offset="100%" stop-color="#ff1d3c" stop-opacity="0.25"></stop>
+                </linearGradient>
+                <filter id="cinematicGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"></feGaussianBlur>
+                    <feComponentTransfer in="blur" result="colorBleed">
+                        <feFuncR type="linear" slope="2"></feFuncR>
+                        <feFuncG type="linear" slope="1.5"></feFuncG>
+                        <feFuncB type="linear" slope="3"></feFuncB>
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode in="colorBleed"></feMergeNode>
+                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                </filter>
+            </defs>
+        </svg>
+
+        <!-- Engrenagem 1: Esquerda -->
+        <svg class="gear gear-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#cinematicGlow)">
+                <!-- Dentes da Engrenagem (Tracejado largo) -->
+                <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
+                <!-- Aro Externo -->
+                <circle cx="50" cy="50" r="43" stroke="rgba(94, 231, 255, 0.4)" stroke-width="1"></circle>
+                <!-- Aro Interno -->
+                <circle cx="50" cy="50" r="28" stroke="url(#gearGradient)" stroke-width="4" stroke-dasharray="10 2"></circle>
+                <!-- Raios (Spokes) -->
+                <path d="M50 7 L50 93 M7 50 L93 50 M20 20 L80 80 M20 80 L80 20" stroke="url(#gearGradient)" stroke-width="1.5"></path>
+                <!-- Centro Ajustado (Círculo vazado mantendo a estrutura) -->
+                <circle cx="50" cy="50" r="14" stroke="rgba(94, 231, 255, 0.4)" stroke-width="2" fill="none"></circle>
+                <circle cx="50" cy="50" r="10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" fill="none"></circle>
+                <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
+            </g>
+        </svg>
+
+        <!-- Engrenagem 2: Direita (Menor Acoplada) -->
+        <svg class="gear gear-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#cinematicGlow)">
+                <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
+                <circle cx="50" cy="50" r="43" stroke="rgba(94, 231, 255, 0.4)" stroke-width="1"></circle>
+                <circle cx="50" cy="50" r="28" stroke="url(#gearGradient)" stroke-width="4" stroke-dasharray="10 2"></circle>
+                <path d="M50 7 L50 93 M7 50 L93 50 M20 20 L80 80 M20 80 L80 20" stroke="url(#gearGradient)" stroke-width="1.5"></path>
+                <circle cx="50" cy="50" r="14" stroke="rgba(94, 231, 255, 0.4)" stroke-width="2" fill="none"></circle>
+                <circle cx="50" cy="50" r="10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" fill="none"></circle>
+                <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
+            </g>
+        </svg>
+
+        <!-- Engrenagem 3: Direita (Maior Acoplada) -->
+        <svg class="gear gear-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#cinematicGlow)">
+                <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
+                <circle cx="50" cy="50" r="43" stroke="rgba(94, 231, 255, 0.4)" stroke-width="1"></circle>
+                <circle cx="50" cy="50" r="28" stroke="url(#gearGradient)" stroke-width="4" stroke-dasharray="10 2"></circle>
+                <path d="M50 7 L50 93 M7 50 L93 50 M20 20 L80 80 M20 80 L80 20" stroke="url(#gearGradient)" stroke-width="1.5"></path>
+                <circle cx="50" cy="50" r="14" stroke="rgba(94, 231, 255, 0.4)" stroke-width="2" fill="none"></circle>
+                <circle cx="50" cy="50" r="10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" fill="none"></circle>
+                <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
+            </g>
+        </svg>
+
+        <!-- Engrenagem 4: Fundo -->
+        <svg class="gear gear-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#cinematicGlow)">
+                <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
+                <circle cx="50" cy="50" r="43" stroke="rgba(94, 231, 255, 0.4)" stroke-width="1"></circle>
+                <circle cx="50" cy="50" r="28" stroke="url(#gearGradient)" stroke-width="4" stroke-dasharray="10 2"></circle>
+                <path d="M50 7 L50 93 M7 50 L93 50 M20 20 L80 80 M20 80 L80 20" stroke="url(#gearGradient)" stroke-width="1.5"></path>
+                <circle cx="50" cy="50" r="14" stroke="rgba(94, 231, 255, 0.4)" stroke-width="2" fill="none"></circle>
+                <circle cx="50" cy="50" r="10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" fill="none"></circle>
+                <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                ExataMente<span>PRO</span>
+            </div>
+            <a href="https://instagram.com/exatamente_pro" target="_blank" class="btn-nav">
+                Instagram
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-card">
+                <div class="hero-cover">
+    <img src="capa_ofc.png" alt="Capa visual do projeto ExataMente PRO">
+</div>
+                <div class="badge">
+                    Engenharia • Física • Conteúdo Viral
+                </div>
+                <h1>
+                    A Engenharia por trás do <span>Hype</span>.
+                </h1>
+                <p>
+                    Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.
+                </p>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <h2>+120 mil</h2>
+                        <p>seguidores construídos com conteúdo técnico e alto alcance orgânico.</p>
+                    </div>
+                    <div class="metric">
+                        <h2>+130 mi</h2>
+                        <p>visualizações acumuladas explorando engenharia, física e curiosidades.</p>
+                    </div>
+                    <div class="metric">
+                        <h2>100%</h2>
+                        <p>conteúdo fundamentado em física, engenharia e mecânica real.</p>
+                    </div>
+                </div>
+
+                <div class="cta-area">
+                    <a href="#produtos" class="btn-primary">Explorar Projetos</a>
+                    <a href="https://instagram.com/exatamente_pro" target="_blank" class="btn-secondary">Ver Instagram</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="produtos">
+            <h2 class="section-title">
+                Produtos &amp; <span>Ecossistema</span>
+            </h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-top">📚</div>
+                    <div class="card-body">
+                        <div class="tag">E-book</div>
+                        <h3>100 Ilusões do Dia a Dia</h3>
+                        <p>Fenômenos cotidianos explicados através da física, engenharia e percepção humana.</p>
+                        <ul class="features">
+                            <li>• Engenharia invisível do cotidiano</li>
+                            <li>• Física aplicada sem enrolação</li>
+                            <li>• Conteúdo visual cinematográfico</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">⚡</div>
+                    <div class="card-body">
+                        <div class="tag">Masterclass</div>
+                        <h3>Arquitetura da Atenção</h3>
+                        <p>Estratégias utilizadas para transformar conteúdo técnico em vídeos virais.</p>
+                        <ul class="features">
+                            <li>• Roteiros de retenção extrema</li>
+                            <li>• Engenharia de narrativa</li>
+                            <li>• Construção de autoridade visual</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-top">🏙️</div>
+                    <div class="card-body">
+                        <div class="tag">Web Experience</div>
+                        <h3>ExataCity 3D</h3>
+                        <p>Visualização imersiva das métricas e crescimento digital em ambiente interativo.</p>
+                        <ul class="features">
+                            <li>• Dashboard cinematográfico</li>
+                            <li>• Visualização dinâmica de dados</li>
+                            <li>• Experiência premium mobile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="manifesto">
+                <h2>O Manifesto</h2>
+                <p>O ExataMente PRO transforma engenharia em entretenimento inteligente. Onde muitos enxergam “mágica”, nós mostramos <strong>física, mecânica e ciência aplicada</strong>.</p>
+                <p style="margin-top:1rem;">Menos conteúdo genérico. Mais profundidade visual, clareza técnica e storytelling científico.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo" style="margin-bottom:.7rem;">
+            ExataMente<span>PRO</span>
+        </div>
+        <p>© 2026 ExataMente PRO — Engenharia, ciência e conteúdo visual.</p>
+    </footer>
+
+    <script>
+    // JavaScript Otimizado para alta performance (60fps) usando requestAnimationFrame
+    let isScrolling = false;
+
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                const scroll = window.scrollY;
+                const gears = document.querySelectorAll('.gear');
+
+                // Engrenagem 1 (Esquerda)
+                gears[0].style.transform = `translateY(${scroll * 0.08}px) rotate(${scroll * 0.15}deg)`;
+
+                // Engrenagem 2 (Direita - Menor Acoplada)
+                // Usa a mesma velocidade Y da engrenagem 3 para se manterem conectadas
+                gears[1].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * -0.25}deg)`;
+
+                // Engrenagem 3 (Direita - Maior Acoplada)
+                gears[2].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * 0.12}deg)`;
+
+                // Engrenagem 4 (Solta no fundo)
+                gears[3].style.transform = `translateY(${scroll * 0.18}px) rotate(${scroll * -0.20}deg)`;
+                
+                isScrolling = false;
+            });
+            isScrolling = true;
+        }
+    });
+    </script>
+</body>
+</html>
