@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO e Meta Tags -->
-    <title>ExataMente PRO | A Engenharia por trás do Hype </title>
-    <meta name="description" content="Explicando fenômenos virais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
+    <title>ExataMente PRO | A Engenharia por trás do Hype</title>
+    <meta name="description" content="Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
     <meta property="og:title" content="ExataMente PRO">
     <meta property="og:description" content="A engenharia por trás do Hype. Ciência, física e mecânica aplicada.">
     <meta property="og:type" content="website">
@@ -41,11 +41,6 @@
         --stroke:rgba(255,255,255,.09);
         --primary:#5ee7ff;
         --gradient: linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
-        /* Cores das Redes Sociais */
-        --yt-color: #ff0000;
-        --tk-color: #00f2fe;
-        --ig-color: #c13584;
-        --fb-color: #1877F2;
     }
 
     /* =========================================
@@ -106,10 +101,41 @@
         transform-origin: center center;
     }
 
-    .gear-1{ width:450px; height:450px; left:-120px; top:5%; opacity: 0.7; }
-    .gear-2{ width:250px; height:250px; right:280px; top:32%; opacity: 0.5; }
-    .gear-3{ width:500px; height:500px; right:-150px; top:15%; opacity: 0.35; }
-    .gear-4{ width:200px; height:200px; left:65%; bottom:5%; opacity: 0.4; }
+    /* Engrenagem 1: Esquerda */
+    .gear-1{
+        width:450px; 
+        height:450px;
+        left:-120px;
+        top:5%;
+        opacity: 0.7; 
+    }
+
+    /* Engrenagem 2: Direita (Menor, Acoplada) */
+    .gear-2{
+        width:250px;
+        height:250px;
+        right:280px; 
+        top:32%;
+        opacity: 0.5;
+    }
+
+    /* Engrenagem 3: Direita (Maior, Base do Acoplamento) */
+    .gear-3{
+        width:500px; 
+        height:500px;
+        right:-150px;
+        top:15%;
+        opacity: 0.35;
+    }
+
+    /* Engrenagem 4: Solta no fundo */
+    .gear-4{
+        width:200px;
+        height:200px;
+        left:65%;
+        bottom:5%;
+        opacity: 0.4;
+    }
 
     /* =========================================
        HEADER
@@ -209,32 +235,18 @@
         margin-bottom:1.3rem;
     }
 
-    /* Título com fonte reduzida para não cortar */
     .hero h1{
-        font-size:clamp(1.8rem, 6.5vw, 4.2rem);
+        font-size:clamp(2.3rem, 8vw, 5rem);
         line-height:.95;
         font-weight:900;
-        letter-spacing:-0.06em;
-        margin-bottom:0.5rem;
+        letter-spacing:-0.08em;
+        margin-bottom:1.2rem;
     }
 
     .hero h1 span{
         background:var(--gradient);
         -webkit-background-clip:text;
         -webkit-text-fill-color:transparent;
-    }
-
-    /* Nova Sub-headline */
-    .sub-headline {
-        font-size:clamp(1.2rem, 3vw, 1.8rem);
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-        color: var(--text);
-        letter-spacing: -0.02em;
-    }
-
-    .sub-headline .icone-x {
-        color: #ff1d3c;
     }
 
     .hero p{
@@ -271,7 +283,7 @@
 
     .metric h2{
         position:relative;
-        font-size:clamp(1.6rem,4vw,2.5rem);
+        font-size:clamp(1.8rem,5vw,2.8rem);
         line-height:1;
         font-weight:900;
         margin-bottom:.5rem;
@@ -310,61 +322,31 @@
         transform:translateY(-3px);
     }
 
-    /* =========================================
-       SEÇÃO: O MÉTODO (ALINHADO AO CENTRO)
-    ========================================= */
-    .method-section {
-        max-width: 1200px;
-        margin: 4rem auto 0;
-        padding: 0 1.2rem;
+    .btn-secondary{
+        flex:1;
+        min-width:220px;
+        text-decoration:none;
+        text-align:center;
+        padding:1rem 1.2rem;
+        border-radius:20px;
+        background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08);
+        color:var(--text);
+        font-weight:700;
+        transition:.25s ease;
     }
 
-    .method-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-    }
-
-    .method-card {
-        background: rgba(255,255,255,.03);
-        border: 1px solid rgba(255,255,255,.05);
-        border-radius: 24px;
-        padding: 2rem;
-        backdrop-filter: blur(10px);
-        position: relative;
-        /* Alinhamento Central */
-        text-align: center;
-    }
-
-    .method-card .step {
-        font-size: 0.8rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        color: var(--primary);
-        letter-spacing: 0.1em;
-        margin-bottom: 1rem;
-        display: block;
-    }
-
-    .method-card h3 {
-        font-size: 1.4rem;
-        font-weight: 800;
-        margin-bottom: 1rem;
-    }
-
-    .method-card p {
-        color: var(--text-soft);
-        line-height: 1.7;
-        font-size: 0.95rem;
+    .btn-secondary:hover{
+        background:rgba(255,255,255,.1);
     }
 
     /* =========================================
-       SEÇÃO: REDES SOCIAIS (UMA LINHA NO DESKTOP)
+       SEÇÕES E CARDS
     ========================================= */
     .section{
         max-width:1200px;
         margin:auto;
-        padding:4rem 1.2rem 5rem;
+        padding:0 1.2rem 5rem;
     }
 
     .section-title{
@@ -377,137 +359,79 @@
     .section-title span{
         color:var(--primary);
     }
-    
-    .social-grid {
-        display: grid;
-        /* Forçar 4 colunas em telas maiores */
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1.2rem;
-    }
-    
-    .social-card {
-        display: flex;
-        flex-direction: column; /* Organização vertical no mobile, ajustado no media query */
-        align-items: center;
-        padding: 1.5rem;
-        border-radius: 24px;
-        background: rgba(255,255,255,.04);
-        border: 1px solid rgba(255,255,255,.07);
-        backdrop-filter: blur(14px);
-        text-decoration: none;
-        color: var(--text);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        text-align: center;
-    }
-    
-    .social-card::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .social-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    
-    .social-card:hover::before {
-        opacity: 1;
-    }
-    
-    /* Cores específicas no hover */
-    .social-card.instagram:hover { border-color: var(--ig-color); }
-    .social-card.youtube:hover { border-color: var(--yt-color); }
-    .social-card.tiktok:hover { border-color: var(--tk-color); }
-    .social-card.facebook:hover { border-color: var(--fb-color); }
-    
-    .social-icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1rem; /* Margem inferior no layout de coluna */
-        background: rgba(255,255,255,0.08);
-        flex-shrink: 0;
-        z-index: 1;
-    }
-    
-    .social-icon svg {
-        width: 32px;
-        height: 32px;
-        fill: currentColor;
-    }
-    
-    /* SVG do Instagram com gradiente do site */
-    .social-card.instagram .social-icon svg { fill: url(#themeGradient); }
-    .social-card.youtube .social-icon { color: #FF0000; }
-    .social-card.tiktok .social-icon { color: #00f2fe; }
-    .social-card.facebook .social-icon { color: #1877F2; }
 
-    .social-info {
-        z-index: 1;
+    .grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:1.2rem;
     }
 
-    .social-info h3 {
-        font-size: 1.15rem;
-        font-weight: 800;
-        margin-bottom: 0.1rem;
+    .card{
+        background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:30px;
+        overflow:hidden;
+        backdrop-filter:blur(14px);
+        transition:.3s ease;
     }
 
-    .social-info p {
-        color: var(--text-soft);
-        font-size: 0.85rem;
-    }
-    
-    /* NOVA MAOZINHA DE MOUSE ANIMADA */
-    .social-click-hand {
-        position: absolute;
-        bottom: 1.2rem;
-        right: 1.2rem;
-        width: 26px;
-        height: 26px;
-        color: var(--text-soft);
-        opacity: 0.5;
-        transition: all 0.3s ease;
-        z-index: 1;
-        will-change: transform, color;
-    }
-    
-    .social-click-hand svg {
-        width: 100%;
-        height: 100%;
-        fill: currentColor;
+    .card:hover{
+        transform:translateY(-5px);
+        border-color:rgba(94,231,255,.25);
     }
 
-    /* Cores específicas e animação no hover */
-    .social-card:hover .social-click-hand {
-        opacity: 1;
-        animation: pulseClickHand 0.8s ease infinite;
-    }
-    
-    .social-card.instagram .social-click-hand svg { fill: url(#igGradientHand); }
-    .social-card.youtube:hover .social-click-hand { color: #FF0000; }
-    .social-card.tiktok:hover .social-click-hand { color: #00f2fe; }
-    .social-card.facebook:hover .social-click-hand { color: #1877F2; }
-
-    @keyframes pulseClickHand {
-        0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-        30% { transform: scale(1.15) rotate(-5deg); opacity: 1; }
-        60% { transform: scale(1.05) rotate(5deg); opacity: 1; }
+    .card-top{
+        height:160px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        font-size:3rem;
+        background: linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
     }
 
-    /* =========================================
-       MANIFESTO E FOOTER
-    ========================================= */
+    .card-body{
+        padding:1.5rem;
+    }
+
+    .tag{
+        display:inline-block;
+        padding:.45rem .8rem;
+        border-radius:999px;
+        background:rgba(94,231,255,.12);
+        color:var(--primary);
+        font-size:.72rem;
+        font-weight:700;
+        margin-bottom:1rem;
+    }
+
+    .card h3{
+        font-size:1.3rem;
+        font-weight:800;
+        margin-bottom:.8rem;
+    }
+
+    .card p{
+        color:var(--text-soft);
+        line-height:1.7;
+        font-size:.95rem;
+        margin-bottom:1.3rem;
+    }
+
+    .features{
+        list-style:none;
+        display:flex;
+        flex-direction:column;
+        gap:.7rem;
+    }
+
+    .features li{
+        color:#dce5f5;
+        font-size:.92rem;
+        line-height:1.6;
+    }
+
     .manifesto{
-        margin-top:2rem;
+        margin-top:4rem;
         padding:2rem;
         border-radius:34px;
         background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
@@ -542,31 +466,18 @@
     }
 
     /* RESPONSIVIDADE */
-    @media(max-width:900px){
-        .social-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
     @media(max-width:768px){
         .hero{ padding-top:1rem; }
         .hero-card{ padding:1.2rem; border-radius:30px; }
         .metrics{ grid-template-columns:1fr; }
+        .cta-area{ flex-direction:column; }
         .hero p{ font-size:.96rem; }
         
+        /* Acoplamento ajustado para telas mobile */
         .gear-1{ width:250px; height:250px; left:-80px; }
         .gear-2{ width:150px; height:150px; right: 140px; top: 25%; }
         .gear-3{ width:350px; height:350px; right:-100px; top: 12%; }
         .gear-4{ width:120px; height:120px; left:60%; }
-        
-        .method-grid { grid-template-columns: 1fr; }
-        
-        .social-grid { grid-template-columns: 1fr; }
-        /* Voltar ao layout horizontal para cards de 1 coluna no mobile */
-        .social-card { flex-direction: row; text-align: left; padding: 1.2rem; }
-        .social-icon { margin-right: 1rem; margin-bottom: 0; width: 50px; height: 50px; border-radius: 12px; }
-        .social-icon svg { width: 26px; height: 26px; }
-        .social-info h3 { font-size: 1.1rem; }
-        .social-info p { font-size: 0.8rem; }
-        .social-click-hand { bottom: 1rem; right: 1rem; width: 22px; height: 22px; }
     }
     </style>
 </head>
@@ -576,27 +487,11 @@
         <!-- Definições Globais de Design (Gradientes e Filtros) -->
         <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
             <defs>
-                <!-- Gradiente para o letreiro principal, engrenagens e logo Insta -->
-                <linearGradient id="themeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ff1d3c" />
-                    <stop offset="50%" stop-color="#8b1fd3" />
-                    <stop offset="100%" stop-color="#315cff" />
-                </linearGradient>
-
-                <!-- Gradiente sutil para engrenagens -->
                 <linearGradient id="gearGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#315cff" stop-opacity="0.3"></stop>
                     <stop offset="50%" stop-color="#5ee7ff" stop-opacity="0.2"></stop>
                     <stop offset="100%" stop-color="#ff1d3c" stop-opacity="0.25"></stop>
                 </linearGradient>
-
-                <!-- Gradiente idêntico ao letreiro para a mãozinha do Insta -->
-                <linearGradient id="igGradientHand" x1="0%" y1="100%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#ff1d3c" />
-                    <stop offset="50%" stop-color="#8b1fd3" />
-                    <stop offset="100%" stop-color="#315cff" />
-                </linearGradient>
-
                 <filter id="cinematicGlow" x="-50%" y="-50%" width="200%" height="200%">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"></feGaussianBlur>
                     <feComponentTransfer in="blur" result="colorBleed">
@@ -612,18 +507,25 @@
             </defs>
         </svg>
 
-        <!-- Engrenagens SVG Mantidas -->
+        <!-- Engrenagem 1: Esquerda -->
         <svg class="gear gear-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#cinematicGlow)">
+                <!-- Dentes da Engrenagem (Tracejado largo) -->
                 <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
+                <!-- Aro Externo -->
                 <circle cx="50" cy="50" r="43" stroke="rgba(94, 231, 255, 0.4)" stroke-width="1"></circle>
+                <!-- Aro Interno -->
                 <circle cx="50" cy="50" r="28" stroke="url(#gearGradient)" stroke-width="4" stroke-dasharray="10 2"></circle>
+                <!-- Raios (Spokes) -->
                 <path d="M50 7 L50 93 M7 50 L93 50 M20 20 L80 80 M20 80 L80 20" stroke="url(#gearGradient)" stroke-width="1.5"></path>
+                <!-- Centro Ajustado (Círculo vazado mantendo a estrutura) -->
                 <circle cx="50" cy="50" r="14" stroke="rgba(94, 231, 255, 0.4)" stroke-width="2" fill="none"></circle>
                 <circle cx="50" cy="50" r="10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" fill="none"></circle>
                 <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
             </g>
         </svg>
+
+        <!-- Engrenagem 2: Direita (Menor Acoplada) -->
         <svg class="gear gear-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#cinematicGlow)">
                 <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
@@ -635,6 +537,8 @@
                 <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
             </g>
         </svg>
+
+        <!-- Engrenagem 3: Direita (Maior Acoplada) -->
         <svg class="gear gear-3" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#cinematicGlow)">
                 <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
@@ -646,6 +550,8 @@
                 <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
             </g>
         </svg>
+
+        <!-- Engrenagem 4: Fundo -->
         <svg class="gear gear-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#cinematicGlow)">
                 <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
@@ -664,8 +570,8 @@
             <div class="logo">
                 ExataMente<span>PRO</span>
             </div>
-            <a href="#redes" class="btn-nav">
-                Siga a Matriz
+            <a href="https://instagram.com/exatamente_pro" target="_blank" class="btn-nav">
+                Instagram
             </a>
         </div>
     </header>
@@ -674,150 +580,86 @@
         <section class="hero">
             <div class="hero-card">
                 <div class="hero-cover">
-                    <img src="capa_ofc.png" alt="Capa visual do projeto ExataMente PRO">
-                </div>
+    <img src="capa_ofc.png" alt="Capa visual do projeto ExataMente PRO">
+</div>
                 <div class="badge">
                     Engenharia • Física • Conteúdo Viral
                 </div>
-                
                 <h1>
                     A Engenharia por trás do <span>Hype</span>.
                 </h1>
-                
-                <h2 class="sub-headline">
-                    <span class="icone-x">❌</span> O fim da ilusão
-                </h2>
-
                 <p>
                     Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.
                 </p>
 
                 <div class="metrics">
                     <div class="metric">
-                        <h2>+120 Mil</h2>
-                        <p>seguidores construídos com conteúdo técnico e orgânico.</p>
+                        <h2>+120 mil</h2>
+                        <p>seguidores construídos com conteúdo técnico e alto alcance orgânico.</p>
                     </div>
                     <div class="metric">
-                        <h2>+130 Milhões</h2>
-                        <p>de visualizações acumuladas explorando Ciência e Física.</p>
+                        <h2>+130 mi</h2>
+                        <p>visualizações acumuladas explorando engenharia, física e curiosidades.</p>
                     </div>
                     <div class="metric">
                         <h2>100%</h2>
-                        <p>de conteúdo fundamentado em Engenharia e Mecânica Real.</p>
+                        <p>conteúdo fundamentado em física, engenharia e mecânica real.</p>
                     </div>
                 </div>
 
                 <div class="cta-area">
-                    <a href="#redes" class="btn-primary">Acompanhe a Matriz</a>
+                    <a href="#produtos" class="btn-primary">Explorar Projetos</a>
+                    <a href="https://instagram.com/exatamente_pro" target="_blank" class="btn-secondary">Ver Instagram</a>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO: O MÉTODO (ALINHADO AO CENTRO) -->
-        <section class="method-section">
+        <section class="section" id="produtos">
             <h2 class="section-title">
-                Como funciona a <span>Engenharia Reversa</span>
+                Produtos &amp; <span>Ecossistema</span>
             </h2>
-            <div class="method-grid">
-                <div class="method-card">
-                    <span class="step">Fase 01</span>
-                    <h3>📱 A Ilusão</h3>
-                    <p>Mapeamos os vídeos mais virais da internet. Aquilo que o público geral olha e enxerga como "mágica", sorte ou truque barato de edição.</p>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-top">📚</div>
+                    <div class="card-body">
+                        <div class="tag">E-book</div>
+                        <h3>100 Ilusões do Dia a Dia</h3>
+                        <p>Fenômenos cotidianos explicados através da física, engenharia e percepção humana.</p>
+                        <ul class="features">
+                            <li>• Engenharia invisível do cotidiano</li>
+                            <li>• Física aplicada sem enrolação</li>
+                            <li>• Conteúdo visual cinematográfico</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="method-card">
-                    <span class="step">Fase 02</span>
-                    <h3>⚙️ O Cálculo</h3>
-                    <p>Aplicamos os princípios estruturais, mecânica dos fluidos, tensão e óptica para descobrir qual é o algoritmo físico operando nos bastidores.</p>
+
+                <div class="card">
+                    <div class="card-top">⚡</div>
+                    <div class="card-body">
+                        <div class="tag">Masterclass</div>
+                        <h3>Arquitetura da Atenção</h3>
+                        <p>Estratégias utilizadas para transformar conteúdo técnico em vídeos virais.</p>
+                        <ul class="features">
+                            <li>• Roteiros de retenção extrema</li>
+                            <li>• Engenharia de narrativa</li>
+                            <li>• Construção de autoridade visual</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="method-card">
-                    <span class="step">Fase 03</span>
-                    <h3>❌ O Fim da Ilusão</h3>
-                    <p>Traduzimos a ciência complexa para uma linguagem de alto impacto e provamos, por A+B, que não é mágica. É puramente Engenharia.</p>
+
+                <div class="card">
+                    <div class="card-top">🏙️</div>
+                    <div class="card-body">
+                        <div class="tag">Web Experience</div>
+                        <h3>ExataCity 3D</h3>
+                        <p>Visualização imersiva das métricas e crescimento digital em ambiente interativo.</p>
+                        <ul class="features">
+                            <li>• Dashboard cinematográfico</li>
+                            <li>• Visualização dinâmica de dados</li>
+                            <li>• Experiência premium mobile</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- REDES SOCIAIS (UMA LINHA E MAOZINHA ANIMADA) -->
-        <section class="section" id="redes">
-            <h2 class="section-title">
-                Conecte-se ao <span>Sistema</span>
-            </h2>
-            
-            <div class="social-grid">
-                
-                <!-- Instagram -->
-                <a href="https://instagram.com/exatamente_pro" target="_blank" class="social-card instagram">
-                    <div class="social-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </div>
-                    <div class="social-info">
-                        <h3>Instagram</h3>
-                        <p>@exatamente_pro</p>
-                    </div>
-                    <!-- Nova Maozinha Animada -->
-                    <div class="social-click-hand">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- YouTube -->
-                <a href="https://youtube.com/@exatamente_pro?si=-TBuxVCVJGnSp0Ut" target="_blank" class="social-card youtube">
-                    <div class="social-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
-                    </div>
-                    <div class="social-info">
-                        <h3>YouTube</h3>
-                        <p>@exatamente_pro</p>
-                    </div>
-                    <div class="social-click-hand">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- TikTok -->
-                <a href="https://www.tiktok.com/@exatamente_pro?is_from_webapp=1&sender_device=pc" target="_blank" class="social-card tiktok">
-                    <div class="social-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                        </svg>
-                    </div>
-                    <div class="social-info">
-                        <h3>TikTok</h3>
-                        <p>@exatamente_pro</p>
-                    </div>
-                    <div class="social-click-hand">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
-                        </svg>
-                    </div>
-                </a>
-
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/profile.php?id=61588697655925&locale=pt_BR" target="_blank" class="social-card facebook">
-                    <div class="social-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                        </svg>
-                    </div>
-                    <div class="social-info">
-                        <h3>Facebook</h3>
-                        <p>@exatamente_pro</p>
-                    </div>
-                    <div class="social-click-hand">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
-                        </svg>
-                    </div>
-                </a>
-
             </div>
 
             <div class="manifesto">
@@ -836,7 +678,7 @@
     </footer>
 
     <script>
-    // JavaScript Mantido e Otimizado
+    // JavaScript Otimizado para alta performance (60fps) usando requestAnimationFrame
     let isScrolling = false;
 
     window.addEventListener('scroll', () => {
@@ -845,9 +687,17 @@
                 const scroll = window.scrollY;
                 const gears = document.querySelectorAll('.gear');
 
+                // Engrenagem 1 (Esquerda)
                 gears[0].style.transform = `translateY(${scroll * 0.08}px) rotate(${scroll * 0.15}deg)`;
+
+                // Engrenagem 2 (Direita - Menor Acoplada)
+                // Usa a mesma velocidade Y da engrenagem 3 para se manterem conectadas
                 gears[1].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * -0.25}deg)`;
+
+                // Engrenagem 3 (Direita - Maior Acoplada)
                 gears[2].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * 0.12}deg)`;
+
+                // Engrenagem 4 (Solta no fundo)
                 gears[3].style.transform = `translateY(${scroll * 0.18}px) rotate(${scroll * -0.20}deg)`;
                 
                 isScrolling = false;
