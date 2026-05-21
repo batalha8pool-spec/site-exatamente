@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO e Meta Tags -->
-    <title>ExataMente PRO | Produtos Recomendados e Engenharia </title>
+    <title>ExataMente PRO | A Engenharia por trás do Hype </title>
     <meta name="description" content="Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
     <meta property="og:title" content="ExataMente PRO">
     <meta property="og:description" content="A engenharia por trás do Hype. Ciência, física e mecânica aplicada.">
@@ -21,7 +21,7 @@
     ========================================= */
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
-    a:focus-visible, .btn-buy:focus-visible {
+    a:focus-visible, .btn-primary:focus-visible, .btn-secondary:focus-visible {
         outline: 3px solid var(--primary); outline-offset: 4px;
     }
 
@@ -59,7 +59,7 @@
     body::before{
         content:''; position:fixed; inset:0;
         background: linear-gradient(to bottom, rgba(8,10,18,.85), rgba(14,18,30,.92));
-        z-index:-4;
+        z-index:-4; /* Jogado ainda mais para trás para acomodar as partículas */
     }
     body::after{
         content:''; position:fixed; inset:-20%;
@@ -84,6 +84,7 @@
 
     /* =========================================
        FLUXO DA MATRIZ (PARTÍCULAS BACKGROUND)
+       Fica à frente das engrenagens (-2), mas atrás do conteúdo real (0 ou mais)
     ========================================= */
     #dataFlowCanvas {
         position: fixed;
@@ -92,7 +93,7 @@
         width: 100vw;
         height: 100vh;
         z-index: -1; 
-        pointer-events: none;
+        pointer-events: none; /* Deixa o clique passar para o site, mas vamos capturar o mouse no window */
     }
 
     /* =========================================
@@ -104,96 +105,72 @@
         background:rgba(20,22,35,.55); border-bottom:1px solid var(--stroke);
     }
     .header-container{
-        max-width:1200px; margin:auto; padding:1.2rem 1.2rem;
-        display:flex; align-items:center; justify-content:flex-start;
+        max-width:1200px; margin:auto; padding:1rem 1.2rem;
+        display:flex; align-items:center; justify-content:space-between;
     }
-    .logo{ font-size:1.25rem; font-weight:900; letter-spacing:-0.05em; }
+    .logo{ font-size:1.15rem; font-weight:900; letter-spacing:-0.05em; }
     .logo span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .btn-nav{
+        text-decoration:none; color:var(--text); font-size:.88rem; font-weight:700;
+        background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
+        padding:.7rem 1rem; border-radius:16px; transition:.25s ease;
+    }
+    .btn-nav:hover{ transform:translateY(-2px); background:rgba(255,255,255,.1); }
 
     /* =========================================
-       HERO E REDES SOCIAIS NO TOPO
+       HERO
     ========================================= */
-    .hero{ max-width:1200px; margin:auto; padding:2rem 1.2rem 2rem; position: relative; z-index: 10; }
+    .hero{ max-width:1200px; margin:auto; padding:2rem 1.2rem 4rem; position: relative; z-index: 10; }
     .hero-card{
         position:relative; overflow:hidden; border-radius:36px;
         background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
         border:1px solid rgba(255,255,255,.1); padding:1.5rem;
         box-shadow: 0 10px 50px rgba(0,0,0,.25); backdrop-filter:blur(14px);
     }
-    .hero-cover{ width:100%; overflow:hidden; border-radius:24px; margin-bottom:1.5rem; }
+    .hero-cover{ width:100%; overflow:hidden; border-radius:24px; margin-bottom:2rem; }
     .hero-cover img{ width:100%; display:block; object-fit:cover; }
-    
-    /* Nova Estrutura das Redes Sociais Compactas no Topo */
-    .top-social-container {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8rem;
-        background: rgba(255,255,255,.05);
-        border: 1px solid rgba(255,255,255,.08);
-        padding: .5rem 1rem;
-        border-radius: 999px;
-        margin-bottom: 1.3rem;
-        flex-wrap: wrap;
+    .badge{
+        display:inline-flex; align-items:center; gap:.5rem;
+        background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
+        padding:.55rem .95rem; border-radius:999px; font-size:.78rem;
+        font-weight:700; color:var(--primary); margin-bottom:1.3rem;
     }
-    .top-social-label {
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--text-soft);
-    }
-    .top-social-icons {
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-    }
-    .top-social-link {
-        color: var(--text);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s ease;
-    }
-    .top-social-link svg {
-        width: 18px;
-        height: 18px;
-        fill: currentColor;
-    }
-    .top-social-link:hover {
-        transform: scale(1.15);
-    }
-    .top-social-link.instagram:hover { color: var(--ig-color); }
-    .top-social-link.youtube:hover { color: var(--yt-color); }
-    .top-social-link.tiktok:hover { color: var(--tk-color); }
-    .top-social-link.facebook:hover { color: var(--fb-color); }
-
     .hero h1{
         font-size:clamp(1.8rem, 6.5vw, 4.2rem); line-height:.95;
         font-weight:900; letter-spacing:-0.06em; margin-bottom:0.5rem;
     }
     .hero h1 span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .sub-headline {
-        font-size:clamp(1.1rem, 3vw, 1.6rem); font-weight: 800;
-        margin-bottom: 1.2rem; color: var(--text); letter-spacing: -0.02em;
+        font-size:clamp(1.2rem, 3vw, 1.8rem); font-weight: 800;
+        margin-bottom: 1.5rem; color: var(--text); letter-spacing: -0.02em;
     }
     .sub-headline .icone-x { color: #ff1d3c; }
-    .hero p{ max-width:700px; color:var(--text-soft); line-height:1.7; font-size:1rem; margin-bottom:1.5rem; }
-    
-    .metrics{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; }
+    .hero p{ max-width:700px; color:var(--text-soft); line-height:1.8; font-size:1rem; margin-bottom:2rem; }
+    .metrics{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
     .metric{
         position:relative; overflow:hidden; background:rgba(255,255,255,.05);
         border:1px solid rgba(255,255,255,.08); border-radius:26px;
-        padding:1.2rem 1.2rem; backdrop-filter:blur(12px);
+        padding:1.5rem 1.2rem; backdrop-filter:blur(12px);
     }
     .metric::before{
         content:''; position:absolute; inset:0;
         background: linear-gradient(135deg, rgba(94,231,255,.12), transparent);
     }
-    .metric h2{ position:relative; font-size:clamp(1.4rem,4vw,2.2rem); line-height:1; font-weight:900; margin-bottom:.4rem; }
-    .metric p{ position:relative; color:var(--text-soft); font-size:.85rem; line-height:1.5; }
+    .metric h2{ position:relative; font-size:clamp(1.6rem,4vw,2.5rem); line-height:1; font-weight:900; margin-bottom:.5rem; }
+    .metric p{ position:relative; color:var(--text-soft); font-size:.9rem; line-height:1.6; }
+    .cta-area{ display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap; }
+    .btn-primary{
+        flex:1; min-width:220px; text-decoration:none; text-align:center;
+        padding:1rem 1.2rem; border-radius:20px; background:var(--gradient);
+        color:white; font-weight:800; font-size:.98rem;
+        box-shadow: 0 12px 30px rgba(139,31,211,.28); transition:.25s ease;
+    }
+    .btn-primary:hover{ transform:translateY(-3px); }
 
     /* =========================================
        O MÉTODO
     ========================================= */
-    .method-section { max-width: 1200px; margin: 3rem auto 0; padding: 0 1.2rem; position: relative; z-index: 10;}
+    .method-section { max-width: 1200px; margin: 4rem auto 0; padding: 0 1.2rem; position: relative; z-index: 10;}
     .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .method-card {
         background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05);
@@ -208,37 +185,11 @@
     .method-card p { color: var(--text-soft); line-height: 1.7; font-size: 0.95rem; }
 
     /* =========================================
-       PRODUTOS RECOMENDADOS (ESTILO NETFLIX CARROSSEL)
+       O ARSENAL (VITRINE ESTILO MELI)
     ========================================= */
     .product-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; position: relative; z-index: 10; }
-    
-    .section-title { font-size: clamp(1.8rem,5vw,2.8rem); font-weight: 900; letter-spacing: -0.06em; margin-bottom: 1.5rem; }
-    .section-title span { color: var(--primary); }
-
-    /* Configuração da Linha de Categorias */
-    .category-row { margin-bottom: 3.5rem; position: relative; }
-    .category-row-title {
-        font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 1.2rem;
-        padding-left: 0.6rem; border-left: 4px solid var(--primary); letter-spacing: -0.01em;
-    }
-
-    /* Área de Scroll Horizontal Estilo Catálogo Netflix */
-    .carousel-container {
-        display: flex;
-        overflow-x: auto;
-        gap: 1.2rem;
-        padding: 0.4rem 0.4rem 1.5rem 0.2rem;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none; /* Oculta barra padrão Firefox */
-    }
-    .carousel-container::-webkit-scrollbar {
-        display: none; /* Oculta barra padrão Chrome/Safari */
-    }
-
-    /* Cards de Produto Adaptados para o Carrossel */
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
     .product-card {
-        flex: 0 0 290px; /* Largura fixa para forçar o peeking/overflow na tela */
-        scroll-snap-align: start;
         background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
         border-radius: 24px; padding: 1.2rem; backdrop-filter: blur(14px);
         transition: all 0.3s ease; display: flex; flex-direction: column;
@@ -248,15 +199,13 @@
         transform: translateY(-5px); border-color: rgba(94, 231, 255, 0.4);
         box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     }
-    
-    /* Container de Imagem */
     .product-image-box {
-        width: 100%; height: 200px; background: #ffffff; border-radius: 16px;
-        margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;
+        width: 100%; height: 220px; background: #ffffff; border-radius: 16px;
+        margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: center;
         overflow: hidden; position: relative;
     }
     .product-image-box img {
-        max-width: 80%; max-height: 80%; object-fit: contain; transition: transform 0.4s ease;
+        max-width: 85%; max-height: 85%; object-fit: contain; transition: transform 0.4s ease;
     }
     .product-card:hover .product-image-box img { transform: scale(1.08); }
     
@@ -264,49 +213,128 @@
         background-color: var(--meli-orange);
         color: #fff; font-size: 0.65rem; font-weight: 800;
         padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;
-        display: inline-block; margin-bottom: 0.5rem; letter-spacing: 0.05em;
+        display: inline-block; margin-bottom: 0.6rem; letter-spacing: 0.05em;
     }
     .product-title {
-        font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.4;
+        font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.4;
         margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical; overflow: hidden; height: 2.8rem;
+        -webkit-box-orient: vertical; overflow: hidden;
     }
-    .product-rating { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.8rem; font-size: 0.8rem; }
-    .stars { color: var(--meli-blue); font-weight: 700; }
+    .product-rating { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.2rem; font-size: 0.85rem; }
+    .stars { color: var(--meli-blue); font-size: 1rem; letter-spacing: 1px; }
     .rating-number { color: var(--text-soft); }
-    .product-pricing-area { margin-top: auto; margin-bottom: 1rem; display: flex; flex-direction: column; }
-    .old-price { color: #8c8c8c; text-decoration: line-through; font-size: 0.8rem; margin-bottom: 0.1rem; }
-    .current-price-row { display: flex; align-items: center; gap: 0.5rem; }
-    .product-price { font-size: 1.6rem; font-weight: 900; color: #fff; margin: 0; }
-    .product-price span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); vertical-align: super; }
-    .discount-badge { color: var(--meli-green); font-size: 0.85rem; font-weight: 600; }
-    .shipping-info { color: var(--meli-green); font-size: 0.8rem; font-weight: 700; margin-top: 0.3rem; }
+    .product-pricing-area { margin-top: auto; margin-bottom: 1.2rem; display: flex; flex-direction: column; }
+    .old-price { color: #8c8c8c; text-decoration: line-through; font-size: 0.85rem; margin-bottom: 0.1rem; }
+    .current-price-row { display: flex; align-items: center; gap: 0.6rem; }
+    .product-price { font-size: 1.8rem; font-weight: 900; color: #fff; margin: 0; }
+    .product-price span { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); vertical-align: super; }
+    .discount-badge { color: var(--meli-green); font-size: 0.9rem; font-weight: 600; }
+    .shipping-info { color: var(--meli-green); font-size: 0.85rem; font-weight: 700; margin-top: 0.4rem; }
+    .btn-buy {
+        display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        width: 100%; padding: 0.9rem; border-radius: 14px; background: #FFE600; 
+        color: #2D3277; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: all 0.2s ease;
+    }
+    .btn-buy:hover { background: #F3DB00; transform: scale(1.02); }
+    .btn-buy svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* =========================================
+       REDES SOCIAIS
+    ========================================= */
+    .section{ max-width:1200px; margin:auto; padding:4rem 1.2rem 5rem; position: relative; z-index: 10;}
+    .section-title{ font-size:clamp(1.8rem,5vw,2.8rem); font-weight: 900; letter-spacing:-0.06em; margin-bottom:2rem; }
+    .section-title span{ color:var(--primary); }
+    .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+    .social-card {
+        display: flex; flex-direction: column; align-items: center; padding: 1.5rem;
+        border-radius: 24px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(14px); text-decoration: none; color: var(--text);
+        transition: all 0.3s ease; position: relative; overflow: hidden; text-align: center;
+    }
+    .social-card::before {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+        opacity: 0; transition: opacity 0.3s ease;
+    }
+    .social-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .social-card:hover::before { opacity: 1; }
+    .social-card.instagram:hover { border-color: var(--ig-color); }
+    .social-card.youtube:hover { border-color: var(--yt-color); }
+    .social-card.tiktok:hover { border-color: var(--tk-color); }
+    .social-card.facebook:hover { border-color: var(--fb-color); }
+    .social-icon {
+        width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center;
+        justify-content: center; margin-bottom: 1rem; background: rgba(255,255,255,0.08);
+        flex-shrink: 0; z-index: 1;
+    }
+    .social-icon svg { width: 32px; height: 32px; fill: currentColor; }
+    .social-card.instagram .social-icon svg { fill: url(#themeGradient); }
+    .social-card.youtube .social-icon { color: #FF0000; }
+    .social-card.tiktok .social-icon { color: #00f2fe; }
+    .social-card.facebook .social-icon { color: #1877F2; }
+    .social-info { z-index: 1; }
+    .social-info h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.1rem; }
+    .social-info p { color: var(--text-soft); font-size: 0.85rem; }
+    .social-click-hand {
+        position: absolute; bottom: 1.2rem; right: 1.2rem; width: 26px; height: 26px;
+        color: var(--text-soft); opacity: 0.5; transition: all 0.3s ease; z-index: 1;
+        will-change: transform, color;
+    }
+    .social-click-hand svg { width: 100%; height: 100%; fill: currentColor; }
+    .social-card:hover .social-click-hand { opacity: 1; animation: pulseClickHand 0.8s ease infinite; }
+    .social-card.instagram .social-click-hand svg { fill: url(#igGradientHand); }
+    .social-card.youtube:hover .social-click-hand { color: #FF0000; }
+    .social-card.tiktok:hover .social-click-hand { color: #00f2fe; }
+    .social-card.facebook:hover .social-click-hand { color: #1877F2; }
+    @keyframes pulseClickHand {
+        0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+        30% { transform: scale(1.15) rotate(-5deg); opacity: 1; }
+        60% { transform: scale(1.05) rotate(5deg); opacity: 1; }
+    }
 
     /* =========================================
        MANIFESTO E FOOTER
     ========================================= */
-    .manifesto-section { max-width: 1200px; margin: auto; padding: 0 1.2rem 4rem; position: relative; z-index: 10; }
     .manifesto{
-        padding: 2rem; border-radius: 34px;
+        margin-top:2rem; padding:2rem; border-radius:34px;
         background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-        border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(14px);
+        border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(14px);
     }
-    .manifesto h2{ font-size: 2rem; font-weight: 900; letter-spacing: -0.05em; margin-bottom: 1rem; }
-    .manifesto p{ color: var(--text-soft); line-height: 1.9; font-size: 1rem; }
-    .manifesto strong{ color: var(--primary); }
-    
+    .manifesto h2{ font-size:2rem; font-weight:900; letter-spacing:-0.05em; margin-bottom:1rem; }
+    .manifesto p{ color:var(--text-soft); line-height:1.9; font-size:1rem; }
+    .manifesto strong{ color:var(--primary); }
     footer{
-        padding: 3rem 1.2rem; text-align: center; position: relative; z-index: 10;
-        border-top: 1px solid rgba(255,255,255,.08); color: var(--text-soft); font-size: .85rem;
+        margin-top:5rem; padding:3rem 1.2rem; text-align:center; position: relative; z-index: 10;
+        border-top:1px solid rgba(255,255,255,.08); color:var(--text-soft); font-size:.85rem;
+    }
+
+    /* RESPONSIVIDADE */
+    @media(max-width:900px){ .social-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:768px){
+        .hero{ padding-top:1rem; }
+        .hero-card{ padding:1.2rem; border-radius:30px; }
+        .metrics{ grid-template-columns:1fr; }
+        .hero p{ font-size:.96rem; }
+        .gear-1{ width:250px; height:250px; left:-80px; }
+        .gear-2{ width:150px; height:150px; right: 140px; top: 25%; }
+        .gear-3{ width:350px; height:350px; right:-100px; top: 12%; }
+        .gear-4{ width:120px; height:120px; left:60%; }
+        .method-grid { grid-template-columns: 1fr; }
+        .social-grid { grid-template-columns: 1fr; }
+        .social-card { flex-direction: row; text-align: left; padding: 1.2rem; }
+        .social-icon { margin-right: 1rem; margin-bottom: 0; width: 50px; height: 50px; border-radius: 12px; }
+        .social-icon svg { width: 26px; height: 26px; }
+        .social-info h3 { font-size: 1.1rem; }
+        .social-info p { font-size: 0.8rem; }
+        .social-click-hand { bottom: 1rem; right: 1rem; width: 22px; height: 22px; }
     }
     </style>
 </head>
 <body>
 
-    <!-- MATRIZ INTERATIVA DE PARTÍCULAS EM SEGUNDO PLANO -->
+    <!-- CANVA GLOBAL DE PARTÍCULAS (MUDOU PARA O FUNDO) -->
     <canvas id="dataFlowCanvas"></canvas>
 
-    <!-- ANIMAÇÃO DE ENGRENAGENS MECÂNICAS -->
     <div class="gears-bg">
         <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
             <defs>
@@ -319,6 +347,11 @@
                     <stop offset="0%" stop-color="#315cff" stop-opacity="0.3"></stop>
                     <stop offset="50%" stop-color="#5ee7ff" stop-opacity="0.2"></stop>
                     <stop offset="100%" stop-color="#ff1d3c" stop-opacity="0.25"></stop>
+                </linearGradient>
+                <linearGradient id="igGradientHand" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#ff1d3c" />
+                    <stop offset="50%" stop-color="#8b1fd3" />
+                    <stop offset="100%" stop-color="#315cff" />
                 </linearGradient>
                 <filter id="cinematicGlow" x="-50%" y="-50%" width="200%" height="200%">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"></feGaussianBlur>
@@ -335,6 +368,7 @@
             </defs>
         </svg>
 
+        <!-- Engrenagens SVG -->
         <svg class="gear gear-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#cinematicGlow)">
                 <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
@@ -381,79 +415,66 @@
         </svg>
     </div>
 
-    <!-- CABEÇALHO LIMPO (BOTÕES REMOVIDOS) -->
     <header>
         <div class="header-container">
             <div class="logo">
                 ExataMente<span>PRO</span>
             </div>
+            <a href="#redes" class="btn-nav">
+                Siga a Matriz
+            </a>
         </div>
     </header>
 
     <main>
-        <!-- HERO CARD (ESTRUTURA DE REDES REVOLUCIONADA NO TOPO) -->
         <section class="hero">
             <div class="hero-card">
                 <div class="hero-cover">
+                    <!-- Nome correto da imagem de capa -->
                     <img src="capa_ofc.png" alt="Capa visual do projeto ExataMente PRO">
                 </div>
-
-                <!-- Nova área compacta de Redes Sociais com Ícones Substituindo a antiga Badge -->
-                <div class="top-social-container">
-                    <span class="top-social-label">Siga-nos nas nossas redes sociais:</span>
-                    <div class="top-social-icons">
-                        <!-- Instagram -->
-                        <a href="https://instagram.com/exatamente_pro" target="_blank" class="top-social-link instagram" title="Instagram">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </a>
-                        <!-- YouTube -->
-                        <a href="https://youtube.com/@exatamente_pro?si=-TBuxVCVJGnSp0Ut" target="_blank" class="top-social-link youtube" title="YouTube">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                        </a>
-                        <!-- TikTok -->
-                        <a href="https://www.tiktok.com/@exatamente_pro?is_from_webapp=1&sender_device=pc" target="_blank" class="top-social-link tiktok" title="TikTok">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                            </svg>
-                        </a>
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/profile.php?id=61588697655925&locale=pt_BR" target="_blank" class="top-social-link facebook" title="Facebook">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
-                        </a>
-                    </div>
+                <div class="badge">
+                    Engenharia • Física • Conteúdo Viral
                 </div>
                 
-                <h1>A Engenharia por trás do <span>Hype</span>.</h1>
-                <h2 class="sub-headline"><span class="icone-x">❌</span> O fim da ilusão</h2>
-                <p>Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.</p>
+                <h1>
+                    A Engenharia por trás do <span>Hype</span>.
+                </h1>
+                
+                <h2 class="sub-headline">
+                    <span class="icone-x">❌</span> O fim da ilusão
+                </h2>
+
+                <p>
+                    Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.
+                </p>
 
                 <div class="metrics">
                     <div class="metric">
                         <h2>+120 Mil</h2>
-                        <p>seguidores construídos com conteúdo técnico orgânico.</p>
+                        <p>seguidores construídos com conteúdo técnico e orgânico.</p>
                     </div>
                     <div class="metric">
                         <h2>+130 Milhões</h2>
-                        <p>de visualizações explorando Ciência e Física.</p>
+                        <p>de visualizações acumuladas explorando Ciência e Física.</p>
                     </div>
                     <div class="metric">
                         <h2>100%</h2>
-                        <p>fundamentado em Engenharia e Mecânica Real.</p>
+                        <p>de conteúdo fundamentado em Engenharia e Mecânica Real.</p>
                     </div>
                 </div>
-                <!-- Botão de CTA removido conforme solicitado -->
+
+                <div class="cta-area">
+                    <a href="#arsenal" class="btn-primary">Acompanhe a Matriz</a>
+                </div>
             </div>
         </section>
 
         <!-- SEÇÃO: O MÉTODO -->
         <section class="method-section">
-            <h2 class="section-title">Como funciona a <span>Engenharia Reversa</span></h2>
+            <h2 class="section-title">
+                Como funciona a <span>Engenharia Reversa</span>
+            </h2>
             <div class="method-grid">
                 <div class="method-card">
                     <span class="step">Fase 01</span>
@@ -473,178 +494,179 @@
             </div>
         </section>
 
-        <!-- SEÇÃO: PRODUTOS RECOMENDADOS (ESTILO NETFLIX CARROSSEL) -->
-        <section class="product-section" id="produtos">
-            <h2 class="section-title">Produtos <span>recomendados</span></h2>
-            
-            <!-- LINHA 1: ELETRÔNICOS -->
-            <div class="category-row">
-                <h3 class="category-row-title">Eletrônicos</h3>
-                <div class="carousel-container">
+        <!-- SEÇÃO: O ARSENAL (VITRINE ESTILO MERCADO LIVRE) -->
+        <section class="product-section" id="arsenal">
+            <h2 class="section-title">
+                O <span>Arsenal</span>
+            </h2>
+            <p style="color: var(--text-soft); font-size: 1rem; margin-top: -1rem; margin-bottom: 1rem; max-width: 600px;">
+                Produtos de tecnologia e hardware analisados e recomendados sob a ótica da nossa matriz.
+            </p>
+
+            <div class="product-grid">
+                
+                <!-- PRODUTO 1: Fone Pro 4 -->
+                <div class="product-card">
+                    <div class="product-image-box">
+                        <img src="fone.webp" alt="Fone de Ouvido Bluetooth Pro 4">
+                    </div>
                     
-                    <!-- Fone Pro 4 -->
-                    <div class="product-card">
-                        <div class="product-image-box">
-                            <img src="fone.webp" alt="Fone de Ouvido Bluetooth Pro 4">
-                        </div>
-                        <div>
-                            <span class="badge-bestseller">MAIS VENDIDO</span>
-                        </div>
-                        <h4 class="product-title">Fone De Ouvido Bluetooth Sem Fio Bateria de Longa Duração Pro 4 Branco Conecta Rápido</h4>
-                        <div class="product-rating">
-                            <span class="stars">4.3 ★★★★☆</span>
-                            <span class="rating-number">(9.943)</span>
-                        </div>
-                        <div class="product-pricing-area">
-                            <div class="old-price"><s>R$ 53,99</s></div>
-                            <div class="current-price-row">
-                                <h2 class="product-price"><span>R$</span> 20<span>,52</span></h2>
-                                <span class="discount-badge">61% OFF</span>
-                            </div>
-                            <div class="shipping-info">Chegará grátis amanhã</div>
-                        </div>
-                        <a href="https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-sem-fio-bateria-de-longa-duraco-pro-4-branco-conecta-rapido-fast-plug/p/MLB25263382?pdp_filters=item_id%3AMLB4617283695#polycard_client=wishlist&wid=MLB4617283695&sid=bookmarks" target="_blank" class="btn-buy">
-                            <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
-                            Comprar no Mercado Livre
-                        </a>
+                    <div class="product-badges">
+                        <span class="badge-bestseller">MAIS VENDIDO</span>
                     </div>
 
-                    <!-- Kit T-Wolf TF800 -->
-                    <div class="product-card">
-                        <div class="product-image-box">
-                            <img src="teclado.webp" alt="Kit Gamer T-Wolf TF800">
-                        </div>
-                        <div>
-                            <span class="badge-bestseller" style="background-color: var(--meli-blue);">RECOMENDADO</span>
-                        </div>
-                        <h4 class="product-title">Kit De Teclado E Mouse Gamer T-Wolf TF800 4 Em 1 Preto RGB</h4>
-                        <div class="product-rating">
-                            <span class="stars">4.8 ★★★★★</span>
-                            <span class="rating-number">(1.240)</span>
-                        </div>
-                        <div class="product-pricing-area">
-                            <div class="old-price"><s>R$ 199,90</s></div>
-                            <div class="current-price-row">
-                                <h2 class="product-price"><span>R$</span> 119<span>,90</span></h2>
-                                <span class="discount-badge">40% OFF</span>
-                            </div>
-                            <div class="shipping-info">Frete grátis</div>
-                        </div>
-                        <a href="https://www.mercadolivre.com.br/kit-de-teclado-e-mouse-gamer-twolf-twolf-tf800-4-em-1-cor-usa-teclado-preto/p/MLB22843008?pdp_filters=item_id%3AMLB5271791320#polycard_client=wishlist&wid=MLB5271791320&sid=bookmarks" target="_blank" class="btn-buy">
-                            <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
-                            Comprar no Mercado Livre
-                        </a>
-                    </div>
-
-                    <!-- Elemento 3 (Para simular a rolagem contínua peeking da Netflix) -->
-                    <div class="product-card" style="opacity: 0.65;">
-                        <div class="product-image-box" style="background: #e1e4e8;">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8c8c8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
-                        </div>
-                        <h4 class="product-title" style="color: var(--text-soft);">Mais eletrônicos sendo validados...</h4>
-                        <div class="product-pricing-area">
-                            <div class="shipping-info" style="color: var(--primary);">Análise de algoritmo em breve</div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- LINHA 2: FERRAMENTAS -->
-            <div class="category-row">
-                <h3 class="category-row-title">Ferramentas</h3>
-                <div class="carousel-container">
+                    <h3 class="product-title">Fone De Ouvido Bluetooth Sem Fio Bateria de Longa Duração Pro 4 Branco Conecta Rápido Fast Plug</h3>
                     
-                    <!-- Paquímetro Digital -->
-                    <div class="product-card">
-                        <div class="product-image-box">
-                            <img src="paquimetro.webp" alt="Paquímetro Digital" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_910762-MLB50025721111_052022-F.webp'">
-                        </div>
-                        <div>
-                            <span class="badge-bestseller" style="background-color: var(--meli-blue);">PRECISÃO</span>
-                        </div>
-                        <h4 class="product-title">Paquímetro Digital de Aço Inox 150mm com Estojo de Proteção</h4>
-                        <div class="product-rating">
-                            <span class="stars">4.7 ★★★★☆</span>
-                            <span class="rating-number">(3.421)</span>
-                        </div>
-                        <div class="product-pricing-area">
-                            <div class="old-price"><s>R$ 120,00</s></div>
-                            <div class="current-price-row">
-                                <h2 class="product-price"><span>R$</span> 89<span>,90</span></h2>
-                                <span class="discount-badge">25% OFF</span>
-                            </div>
-                            <div class="shipping-info">Chegará grátis amanhã</div>
-                        </div>
-                        <a href="#" class="btn-buy" onclick="alert('Link de afiliado genérico. Substitua no href do HTML.'); return false;">
-                            <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
-                            Comprar no Mercado Livre
-                        </a>
+                    <div class="product-rating">
+                        <span class="stars">4.3 ★★★★☆</span>
+                        <span class="rating-number">(9943)</span>
                     </div>
 
-                    <!-- Parafusadeira Elétrica -->
-                    <div class="product-card">
-                        <div class="product-image-box">
-                            <img src="parafusadeira.webp" alt="Parafusadeira Furadeira" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_634563-MLU72619426630_112023-F.webp'">
+                    <div class="product-pricing-area">
+                        <div class="old-price"><s>R$ 53,99</s></div>
+                        <div class="current-price-row">
+                            <h2 class="product-price"><span>R$</span> 20<span>,52</span></h2>
+                            <span class="discount-badge">61% OFF</span>
                         </div>
-                        <div>
-                            <span class="badge-bestseller">DURABILIDADE</span>
-                        </div>
-                        <h4 class="product-title">Parafusadeira e Furadeira de Impacto Sem Fio Bateria Lítio 12V</h4>
-                        <div class="product-rating">
-                            <span class="stars">4.9 ★★★★★</span>
-                            <span class="rating-number">(854)</span>
-                        </div>
-                        <div class="product-pricing-area">
-                            <div class="old-price"><s>R$ 249,90</s></div>
-                            <div class="current-price-row">
-                                <h2 class="product-price"><span>R$</span> 179<span>,90</span></h2>
-                                <span class="discount-badge">28% OFF</span>
-                            </div>
-                            <div class="shipping-info">Frete grátis</div>
-                        </div>
-                        <a href="#" class="btn-buy" onclick="alert('Link de afiliado genérico. Substitua no href do HTML.'); return false;">
-                            <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
-                            Comprar no Mercado Livre
-                        </a>
+                        <div class="shipping-info">Chegará grátis amanhã</div>
                     </div>
 
-                    <!-- Trena Laser -->
-                    <div class="product-card" style="opacity: 0.85;">
-                        <div class="product-image-box">
-                            <img src="trena.webp" alt="Trena Laser" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_706599-MLU74332997818_022024-F.webp'">
-                        </div>
-                        <h4 class="product-title">Trena Métrica Laser Digital Medidor de Distância 40 Metros</h4>
-                        <div class="product-rating">
-                            <span class="stars">4.6 ★★★★☆</span>
-                            <span class="rating-number">(430)</span>
-                        </div>
-                        <div class="product-pricing-area">
-                            <div class="old-price"><s>R$ 159,00</s></div>
-                            <div class="current-price-row">
-                                <h2 class="product-price"><span>R$</span> 112<span>,50</span></h2>
-                                <span class="discount-badge">29% OFF</span>
-                            </div>
-                            <div class="shipping-info">Chegará nesta semana</div>
-                        </div>
-                        <a href="#" class="btn-buy" onclick="alert('Link de afiliado genérico. Substitua no href do HTML.'); return false;">
-                            <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
-                            Comprar no Mercado Livre
-                        </a>
-                    </div>
-
+                    <a href="https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-sem-fio-bateria-de-longa-duraco-pro-4-branco-conecta-rapido-fast-plug/p/MLB25263382?pdp_filters=item_id%3AMLB4617283695#polycard_client=wishlist&wid=MLB4617283695&sid=bookmarks" target="_blank" class="btn-buy">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/>
+                        </svg>
+                        Comprar no Mercado Livre
+                    </a>
                 </div>
+
+                <!-- PRODUTO 2: Kit T-Wolf TF800 -->
+                <div class="product-card">
+                    <div class="product-image-box">
+                        <img src="teclado.webp" alt="Kit Gamer T-Wolf TF800">
+                    </div>
+
+                    <div class="product-badges">
+                        <span class="badge-bestseller" style="background-color: var(--meli-blue);">RECOMENDADO</span>
+                    </div>
+
+                    <h3 class="product-title">Kit De Teclado E Mouse Gamer T-Wolf TF800 4 Em 1 Preto</h3>
+                    
+                    <div class="product-rating">
+                        <span class="stars">4.8 ★★★★★</span>
+                        <span class="rating-number">(1240)</span>
+                    </div>
+
+                    <div class="product-pricing-area">
+                        <div class="old-price"><s>R$ 199,90</s></div>
+                        <div class="current-price-row">
+                            <h2 class="product-price"><span>R$</span> 119<span>,90</span></h2>
+                            <span class="discount-badge">40% OFF</span>
+                        </div>
+                        <div class="shipping-info">Frete grátis</div>
+                    </div>
+
+                    <a href="https://www.mercadolivre.com.br/kit-de-teclado-e-mouse-gamer-twolf-tf800-4-em-1-cor-usa-teclado-preto/p/MLB22843008?pdp_filters=item_id%3AMLB5271791320#polycard_client=wishlist&wid=MLB5271791320&sid=bookmarks" target="_blank" class="btn-buy">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/>
+                        </svg>
+                        Comprar no Mercado Livre
+                    </a>
+                </div>
+
             </div>
         </section>
 
-        <!-- SEÇÃO DO MANIFESTO -->
-        <section class="manifesto-section">
+        <!-- REDES SOCIAIS -->
+        <section class="section" id="redes">
+            <h2 class="section-title">
+                Conecte-se ao <span>Sistema</span>
+            </h2>
+            
+            <div class="social-grid">
+                
+                <!-- Instagram -->
+                <a href="https://instagram.com/exatamente_pro" target="_blank" class="social-card instagram">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </div>
+                    <div class="social-info">
+                        <h3>Instagram</h3>
+                        <p>@exatamente_pro</p>
+                    </div>
+                    <div class="social-click-hand">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/@exatamente_pro?si=-TBuxVCVJGnSp0Ut" target="_blank" class="social-card youtube">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </div>
+                    <div class="social-info">
+                        <h3>YouTube</h3>
+                        <p>@exatamente_pro</p>
+                    </div>
+                    <div class="social-click-hand">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@exatamente_pro?is_from_webapp=1&sender_device=pc" target="_blank" class="social-card tiktok">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                        </svg>
+                    </div>
+                    <div class="social-info">
+                        <h3>TikTok</h3>
+                        <p>@exatamente_pro</p>
+                    </div>
+                    <div class="social-click-hand">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/profile.php?id=61588697655925&locale=pt_BR" target="_blank" class="social-card facebook">
+                    <div class="social-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </div>
+                    <div class="social-info">
+                        <h3>Facebook</h3>
+                        <p>@exatamente_pro</p>
+                    </div>
+                    <div class="social-click-hand">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                        </svg>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <section class="section">
             <div class="manifesto">
                 <h2>O Manifesto</h2>
                 <p>O ExataMente PRO transforma engenharia em entretenimento inteligente. Onde muitos enxergam "mágica", nós mostramos <strong>física, mecânica e ciência aplicada</strong>.</p>
                 <p style="margin-top:1rem;">Menos conteúdo genérico. Mais profundidade visual, clareza técnica e storytelling científico.</p>
             </div>
         </section>
+
     </main>
 
     <footer>
@@ -659,6 +681,7 @@
         const dataCanvas = document.getElementById('dataFlowCanvas');
         const dataCtx = dataCanvas.getContext('2d');
 
+        // Ajustar o canvas para preencher a janela toda
         function resizeCanvas() {
             dataCanvas.width = window.innerWidth;
             dataCanvas.height = window.innerHeight;
@@ -778,6 +801,7 @@
             requestAnimationFrame(loopDataFlow);
         }
 
+        // Como o canvas está no fundo, capturamos o mouse no objeto 'window'
         window.addEventListener('mousemove', (e) => {
             simMouse.x = e.clientX;
             simMouse.y = e.clientY;
