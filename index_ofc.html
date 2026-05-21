@@ -1,25 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO e Meta Tags -->
     <title>ExataMente PRO | A Engenharia por trás do Hype </title>
-    <meta name="description" content="Explicando fenómenos virais, falhas estruturais, ilusões do quotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
+    <meta name="description" content="Explicando fenômenos virais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
+    <meta property="og:title" content="ExataMente PRO">
+    <meta property="og:description" content="A engenharia por trás do Hype. Ciência, física e mecânica aplicada.">
+    <meta property="og:type" content="website">
     
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
 
     <style>
     /* =========================================
        RESET E ACESSIBILIDADE
     ========================================= */
-    *{ margin:0; padding:0; box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    html{
+        scroll-behavior:smooth;
+    }
+
     a:focus-visible, .btn-primary:focus-visible, .btn-secondary:focus-visible {
-        outline: 3px solid var(--primary); outline-offset: 4px;
+        outline: 3px solid var(--primary);
+        outline-offset: 4px;
     }
 
     :root{
@@ -29,13 +41,11 @@
         --stroke:rgba(255,255,255,.09);
         --primary:#5ee7ff;
         --gradient: linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+        /* Cores das Redes Sociais */
         --yt-color: #ff0000;
         --tk-color: #00f2fe;
         --ig-color: #c13584;
         --fb-color: #1877F2;
-        --meli-blue: #3483FA;
-        --meli-green: #00a650;
-        --meli-orange: #F76300;
     }
 
     /* =========================================
@@ -43,26 +53,36 @@
     ========================================= */
     body{
         font-family:'Inter',sans-serif;
-        background: radial-gradient(circle at 20% 20%, rgba(255,60,100,.22), transparent 25%),
-                    radial-gradient(circle at 80% 30%, rgba(90,70,255,.18), transparent 30%),
-                    radial-gradient(circle at 50% 80%, rgba(0,220,255,.12), transparent 30%),
-                    linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+        background:
+        radial-gradient(circle at 20% 20%, rgba(255,60,100,.22), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(90,70,255,.18), transparent 30%),
+        radial-gradient(circle at 50% 80%, rgba(0,220,255,.12), transparent 30%),
+        linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
         background-attachment:fixed;
         color:var(--text);
         overflow-x:hidden;
         position:relative;
         min-height:100vh;
     }
+
     body::before{
-        content:''; position:fixed; inset:0;
+        content:'';
+        position:fixed;
+        inset:0;
         background: linear-gradient(to bottom, rgba(8,10,18,.85), rgba(14,18,30,.92));
         z-index:-3;
     }
+
     body::after{
-        content:''; position:fixed; inset:-20%;
+        content:'';
+        position:fixed;
+        inset:-20%;
         background: radial-gradient(circle, rgba(255,255,255,.03), transparent 60%);
-        animation:bgMove 20s linear infinite; z-index:-2; pointer-events:none;
+        animation:bgMove 20s linear infinite;
+        z-index:-2;
+        pointer-events:none;
     }
+
     @keyframes bgMove{
         0%{ transform:translate(0,0) rotate(0deg); }
         50%{ transform:translate(-3%,2%) rotate(180deg); }
@@ -70,10 +90,22 @@
     }
 
     /* =========================================
-       DESIGN DAS ENGRENAGENS
+       DESIGN DAS ENGRENAGENS (ACOPLADAS)
     ========================================= */
-    .gears-bg{ position:fixed; inset:0; overflow:hidden; z-index:-1; pointer-events:none; }
-    .gear{ position:absolute; will-change: transform; transform-origin: center center; }
+    .gears-bg{
+        position:fixed;
+        inset:0;
+        overflow:hidden;
+        z-index:-1;
+        pointer-events:none;
+    }
+
+    .gear{
+        position:absolute;
+        will-change: transform; 
+        transform-origin: center center;
+    }
+
     .gear-1{ width:450px; height:450px; left:-120px; top:5%; opacity: 0.7; }
     .gear-2{ width:250px; height:250px; right:280px; top:32%; opacity: 0.5; }
     .gear-3{ width:500px; height:500px; right:-150px; top:15%; opacity: 0.35; }
@@ -83,250 +115,388 @@
        HEADER
     ========================================= */
     header{
-        position:sticky; top:0; z-index:999;
-        backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
-        background:rgba(20,22,35,.55); border-bottom:1px solid var(--stroke);
+        position:sticky;
+        top:0;
+        z-index:999;
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+        background:rgba(20,22,35,.55);
+        border-bottom:1px solid var(--stroke);
     }
+
     .header-container{
-        max-width:1200px; margin:auto; padding:1rem 1.2rem;
-        display:flex; align-items:center; justify-content:space-between;
+        max-width:1200px;
+        margin:auto;
+        padding:1rem 1.2rem;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
     }
-    .logo{ font-size:1.15rem; font-weight:900; letter-spacing:-0.05em; }
-    .logo span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    .logo{
+        font-size:1.15rem;
+        font-weight:900;
+        letter-spacing:-0.05em;
+    }
+
+    .logo span{
+        background:var(--gradient);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
     .btn-nav{
-        text-decoration:none; color:var(--text); font-size:.88rem; font-weight:700;
-        background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1);
-        padding:.7rem 1rem; border-radius:16px; transition:.25s ease;
+        text-decoration:none;
+        color:var(--text);
+        font-size:.88rem;
+        font-weight:700;
+        background:rgba(255,255,255,.06);
+        border:1px solid rgba(255,255,255,.1);
+        padding:.7rem 1rem;
+        border-radius:16px;
+        transition:.25s ease;
     }
-    .btn-nav:hover{ transform:translateY(-2px); background:rgba(255,255,255,.1); }
+
+    .btn-nav:hover{
+        transform:translateY(-2px);
+        background:rgba(255,255,255,.1);
+    }
 
     /* =========================================
-       HERO
+       HERO E COMPONENTES PRINCIPAIS
     ========================================= */
-    .hero{ max-width:1200px; margin:auto; padding:2rem 1.2rem 4rem; }
+    .hero{
+        max-width:1200px;
+        margin:auto;
+        padding:2rem 1.2rem 4rem;
+    }
+
     .hero-card{
-        position:relative; overflow:hidden; border-radius:36px;
+        position:relative;
+        overflow:hidden;
+        border-radius:36px;
         background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
-        border:1px solid rgba(255,255,255,.1); padding:1.5rem;
-        box-shadow: 0 10px 50px rgba(0,0,0,.25); backdrop-filter:blur(14px);
+        border:1px solid rgba(255,255,255,.1);
+        padding:1.5rem;
+        box-shadow: 0 10px 50px rgba(0,0,0,.25);
+        backdrop-filter:blur(14px);
     }
-    .hero-cover{ width:100%; overflow:hidden; border-radius:24px; margin-bottom:2rem; }
-    .hero-cover img{ width:100%; display:block; object-fit:cover; }
+
+    .hero-cover{
+        width:100%;
+        overflow:hidden;
+        border-radius:24px;
+        margin-bottom:2rem;
+    }
+
+    .hero-cover img{
+        width:100%;
+        display:block;
+        object-fit:cover;
+    }
+
     .badge{
-        display:inline-flex; align-items:center; gap:.5rem;
-        background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08);
-        padding:.55rem .95rem; border-radius:999px; font-size:.78rem;
-        font-weight:700; color:var(--primary); margin-bottom:1.3rem;
+        display:inline-flex;
+        align-items:center;
+        gap:.5rem;
+        background:rgba(255,255,255,.06);
+        border:1px solid rgba(255,255,255,.08);
+        padding:.55rem .95rem;
+        border-radius:999px;
+        font-size:.78rem;
+        font-weight:700;
+        color:var(--primary);
+        margin-bottom:1.3rem;
     }
+
+    /* Título com fonte reduzida para não cortar */
     .hero h1{
-        font-size:clamp(1.8rem, 6.5vw, 4.2rem); line-height:.95;
-        font-weight:900; letter-spacing:-0.06em; margin-bottom:0.5rem;
+        font-size:clamp(1.8rem, 6.5vw, 4.2rem);
+        line-height:.95;
+        font-weight:900;
+        letter-spacing:-0.06em;
+        margin-bottom:0.5rem;
     }
-    .hero h1 span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    .hero h1 span{
+        background:var(--gradient);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+    }
+
+    /* Nova Sub-headline */
     .sub-headline {
-        font-size:clamp(1.2rem, 3vw, 1.8rem); font-weight: 800;
-        margin-bottom: 1.5rem; color: var(--text); letter-spacing: -0.02em;
+        font-size:clamp(1.2rem, 3vw, 1.8rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        color: var(--text);
+        letter-spacing: -0.02em;
     }
-    .sub-headline .icone-x { color: #ff1d3c; }
-    .hero p{ max-width:700px; color:var(--text-soft); line-height:1.8; font-size:1rem; margin-bottom:2rem; }
-    .metrics{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+
+    .sub-headline .icone-x {
+        color: #ff1d3c;
+    }
+
+    .hero p{
+        max-width:700px;
+        color:var(--text-soft);
+        line-height:1.8;
+        font-size:1rem;
+        margin-bottom:2rem;
+    }
+
+    .metrics{
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:1rem;
+        margin-top:2rem;
+    }
+
     .metric{
-        position:relative; overflow:hidden; background:rgba(255,255,255,.05);
-        border:1px solid rgba(255,255,255,.08); border-radius:26px;
-        padding:1.5rem 1.2rem; backdrop-filter:blur(12px);
+        position:relative;
+        overflow:hidden;
+        background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08);
+        border-radius:26px;
+        padding:1.5rem 1.2rem;
+        backdrop-filter:blur(12px);
     }
+
     .metric::before{
-        content:''; position:absolute; inset:0;
+        content:'';
+        position:absolute;
+        inset:0;
         background: linear-gradient(135deg, rgba(94,231,255,.12), transparent);
     }
-    .metric h2{ position:relative; font-size:clamp(1.6rem,4vw,2.5rem); line-height:1; font-weight:900; margin-bottom:.5rem; }
-    .metric p{ position:relative; color:var(--text-soft); font-size:.9rem; line-height:1.6; }
-    .cta-area{ display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap; }
+
+    .metric h2{
+        position:relative;
+        font-size:clamp(1.6rem,4vw,2.5rem);
+        line-height:1;
+        font-weight:900;
+        margin-bottom:.5rem;
+    }
+
+    .metric p{
+        position:relative;
+        color:var(--text-soft);
+        font-size:.9rem;
+        line-height:1.6;
+    }
+
+    .cta-area{
+        display:flex;
+        gap:1rem;
+        margin-top:2rem;
+        flex-wrap:wrap;
+    }
+
     .btn-primary{
-        flex:1; min-width:220px; text-decoration:none; text-align:center;
-        padding:1rem 1.2rem; border-radius:20px; background:var(--gradient);
-        color:white; font-weight:800; font-size:.98rem;
-        box-shadow: 0 12px 30px rgba(139,31,211,.28); transition:.25s ease;
+        flex:1;
+        min-width:220px;
+        text-decoration:none;
+        text-align:center;
+        padding:1rem 1.2rem;
+        border-radius:20px;
+        background:var(--gradient);
+        color:white;
+        font-weight:800;
+        font-size:.98rem;
+        box-shadow: 0 12px 30px rgba(139,31,211,.28);
+        transition:.25s ease;
     }
-    .btn-primary:hover{ transform:translateY(-3px); }
+
+    .btn-primary:hover{
+        transform:translateY(-3px);
+    }
 
     /* =========================================
-       O MÉTODO
+       SEÇÃO: O MÉTODO (ALINHADO AO CENTRO)
     ========================================= */
-    .method-section { max-width: 1200px; margin: 4rem auto 0; padding: 0 1.2rem; }
-    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .method-section {
+        max-width: 1200px;
+        margin: 4rem auto 0;
+        padding: 0 1.2rem;
+    }
+
+    .method-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
     .method-card {
-        background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05);
-        border-radius: 24px; padding: 2rem; backdrop-filter: blur(10px);
-        position: relative; text-align: center;
+        background: rgba(255,255,255,.03);
+        border: 1px solid rgba(255,255,255,.05);
+        border-radius: 24px;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        position: relative;
+        /* Alinhamento Central */
+        text-align: center;
     }
+
     .method-card .step {
-        font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
-        color: var(--primary); letter-spacing: 0.1em; margin-bottom: 1rem; display: block;
-    }
-    .method-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; }
-    .method-card p { color: var(--text-soft); line-height: 1.7; font-size: 0.95rem; }
-
-    /* =========================================
-       O ARSENAL (VITRINE ESTILO MELI)
-    ========================================= */
-    .product-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-    .product-card {
-        background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
-        border-radius: 24px; padding: 1.2rem; backdrop-filter: blur(14px);
-        transition: all 0.3s ease; display: flex; flex-direction: column;
-        position: relative; overflow: hidden;
-    }
-    .product-card:hover {
-        transform: translateY(-5px); border-color: rgba(94, 231, 255, 0.4);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    }
-    .product-image-box {
-        width: 100%; height: 220px; background: #ffffff; border-radius: 16px;
-        margin-bottom: 1.2rem; display: flex; align-items: center; justify-content: center;
-        overflow: hidden; position: relative;
-    }
-    .product-image-box img {
-        max-width: 85%; max-height: 85%; object-fit: contain; transition: transform 0.4s ease;
-    }
-    .product-card:hover .product-image-box img { transform: scale(1.08); }
-    
-    /* Etiqueta Mais Vendido */
-    .badge-bestseller {
-        background-color: var(--meli-orange);
-        color: #fff;
-        font-size: 0.65rem;
+        font-size: 0.8rem;
         font-weight: 800;
-        padding: 0.25rem 0.5rem;
-        border-radius: 4px;
         text-transform: uppercase;
-        display: inline-block;
-        margin-bottom: 0.6rem;
-        letter-spacing: 0.05em;
+        color: var(--primary);
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+        display: block;
     }
 
-    .product-title {
-        font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.4;
-        margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical; overflow: hidden;
+    .method-card h3 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
     }
 
-    /* Avaliações / Estrelas */
-    .product-rating {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        margin-bottom: 1.2rem;
-        font-size: 0.85rem;
-    }
-    .stars {
-        color: var(--meli-blue);
-        font-size: 1rem;
-        letter-spacing: 1px;
-    }
-    .rating-number {
+    .method-card p {
         color: var(--text-soft);
+        line-height: 1.7;
+        font-size: 0.95rem;
     }
-
-    /* Área de Preço */
-    .product-pricing-area {
-        margin-top: auto;
-        margin-bottom: 1.2rem;
-        display: flex;
-        flex-direction: column;
-    }
-    .old-price {
-        color: #8c8c8c;
-        text-decoration: line-through;
-        font-size: 0.85rem;
-        margin-bottom: 0.1rem;
-    }
-    .current-price-row {
-        display: flex;
-        align-items: center;
-        gap: 0.6rem;
-    }
-    .product-price { 
-        font-size: 1.8rem; 
-        font-weight: 900; 
-        color: #fff; 
-        margin: 0; 
-    }
-    .product-price span { 
-        font-size: 0.9rem; 
-        font-weight: 600; 
-        color: var(--text-soft); 
-        vertical-align: super; /* Para o R$ ficar alto como no Meli */
-    }
-    .discount-badge {
-        color: var(--meli-green);
-        font-size: 0.9rem;
-        font-weight: 600;
-    }
-    .shipping-info {
-        color: var(--meli-green);
-        font-size: 0.85rem;
-        font-weight: 700;
-        margin-top: 0.4rem;
-    }
-
-    .btn-buy {
-        display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-        width: 100%; padding: 0.9rem; border-radius: 14px; background: #FFE600; 
-        color: #2D3277; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: all 0.2s ease;
-    }
-    .btn-buy:hover { background: #F3DB00; transform: scale(1.02); }
-    .btn-buy svg { width: 18px; height: 18px; fill: currentColor; }
 
     /* =========================================
-       REDES SOCIAIS
+       SEÇÃO: REDES SOCIAIS (UMA LINHA NO DESKTOP)
     ========================================= */
-    .section{ max-width:1200px; margin:auto; padding:4rem 1.2rem 5rem; }
-    .section-title{ font-size:clamp(1.8rem,5vw,2.8rem); font-weight: 900; letter-spacing:-0.06em; margin-bottom:2rem; }
-    .section-title span{ color:var(--primary); }
-    .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+    .section{
+        max-width:1200px;
+        margin:auto;
+        padding:4rem 1.2rem 5rem;
+    }
+
+    .section-title{
+        font-size:clamp(1.8rem,5vw,2.8rem);
+        font-weight:900;
+        letter-spacing:-0.06em;
+        margin-bottom:2rem;
+    }
+
+    .section-title span{
+        color:var(--primary);
+    }
+    
+    .social-grid {
+        display: grid;
+        /* Forçar 4 colunas em telas maiores */
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+    }
+    
     .social-card {
-        display: flex; flex-direction: column; align-items: center; padding: 1.5rem;
-        border-radius: 24px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-        backdrop-filter: blur(14px); text-decoration: none; color: var(--text);
-        transition: all 0.3s ease; position: relative; overflow: hidden; text-align: center;
+        display: flex;
+        flex-direction: column; /* Organização vertical no mobile, ajustado no media query */
+        align-items: center;
+        padding: 1.5rem;
+        border-radius: 24px;
+        background: rgba(255,255,255,.04);
+        border: 1px solid rgba(255,255,255,.07);
+        backdrop-filter: blur(14px);
+        text-decoration: none;
+        color: var(--text);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
     }
+    
     .social-card::before {
-        content: ''; position: absolute; inset: 0;
+        content: '';
+        position: absolute;
+        inset: 0;
         background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-        opacity: 0; transition: opacity 0.3s ease;
+        opacity: 0;
+        transition: opacity 0.3s ease;
     }
-    .social-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-    .social-card:hover::before { opacity: 1; }
+    
+    .social-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .social-card:hover::before {
+        opacity: 1;
+    }
+    
+    /* Cores específicas no hover */
     .social-card.instagram:hover { border-color: var(--ig-color); }
     .social-card.youtube:hover { border-color: var(--yt-color); }
     .social-card.tiktok:hover { border-color: var(--tk-color); }
     .social-card.facebook:hover { border-color: var(--fb-color); }
+    
     .social-icon {
-        width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center;
-        justify-content: center; margin-bottom: 1rem; background: rgba(255,255,255,0.08);
-        flex-shrink: 0; z-index: 1;
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem; /* Margem inferior no layout de coluna */
+        background: rgba(255,255,255,0.08);
+        flex-shrink: 0;
+        z-index: 1;
     }
-    .social-icon svg { width: 32px; height: 32px; fill: currentColor; }
+    
+    .social-icon svg {
+        width: 32px;
+        height: 32px;
+        fill: currentColor;
+    }
+    
+    /* SVG do Instagram com gradiente do site */
     .social-card.instagram .social-icon svg { fill: url(#themeGradient); }
     .social-card.youtube .social-icon { color: #FF0000; }
     .social-card.tiktok .social-icon { color: #00f2fe; }
     .social-card.facebook .social-icon { color: #1877F2; }
-    .social-info { z-index: 1; }
-    .social-info h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.1rem; }
-    .social-info p { color: var(--text-soft); font-size: 0.85rem; }
+
+    .social-info {
+        z-index: 1;
+    }
+
+    .social-info h3 {
+        font-size: 1.15rem;
+        font-weight: 800;
+        margin-bottom: 0.1rem;
+    }
+
+    .social-info p {
+        color: var(--text-soft);
+        font-size: 0.85rem;
+    }
+    
+    /* NOVA MAOZINHA DE MOUSE ANIMADA */
     .social-click-hand {
-        position: absolute; bottom: 1.2rem; right: 1.2rem; width: 26px; height: 26px;
-        color: var(--text-soft); opacity: 0.5; transition: all 0.3s ease; z-index: 1;
+        position: absolute;
+        bottom: 1.2rem;
+        right: 1.2rem;
+        width: 26px;
+        height: 26px;
+        color: var(--text-soft);
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        z-index: 1;
         will-change: transform, color;
     }
-    .social-click-hand svg { width: 100%; height: 100%; fill: currentColor; }
-    .social-card:hover .social-click-hand { opacity: 1; animation: pulseClickHand 0.8s ease infinite; }
+    
+    .social-click-hand svg {
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
+    }
+
+    /* Cores específicas e animação no hover */
+    .social-card:hover .social-click-hand {
+        opacity: 1;
+        animation: pulseClickHand 0.8s ease infinite;
+    }
+    
     .social-card.instagram .social-click-hand svg { fill: url(#igGradientHand); }
     .social-card.youtube:hover .social-click-hand { color: #FF0000; }
     .social-card.tiktok:hover .social-click-hand { color: #00f2fe; }
     .social-card.facebook:hover .social-click-hand { color: #1877F2; }
+
     @keyframes pulseClickHand {
         0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
         30% { transform: scale(1.15) rotate(-5deg); opacity: 1; }
@@ -337,31 +507,60 @@
        MANIFESTO E FOOTER
     ========================================= */
     .manifesto{
-        margin-top:2rem; padding:2rem; border-radius:34px;
+        margin-top:2rem;
+        padding:2rem;
+        border-radius:34px;
         background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-        border:1px solid rgba(255,255,255,.08); backdrop-filter:blur(14px);
+        border:1px solid rgba(255,255,255,.08);
+        backdrop-filter:blur(14px);
     }
-    .manifesto h2{ font-size:2rem; font-weight:900; letter-spacing:-0.05em; margin-bottom:1rem; }
-    .manifesto p{ color:var(--text-soft); line-height:1.9; font-size:1rem; }
-    .manifesto strong{ color:var(--primary); }
+
+    .manifesto h2{
+        font-size:2rem;
+        font-weight:900;
+        letter-spacing:-0.05em;
+        margin-bottom:1rem;
+    }
+
+    .manifesto p{
+        color:var(--text-soft);
+        line-height:1.9;
+        font-size:1rem;
+    }
+
+    .manifesto strong{
+        color:var(--primary);
+    }
+
     footer{
-        margin-top:5rem; padding:3rem 1.2rem; text-align:center;
-        border-top:1px solid rgba(255,255,255,.08); color:var(--text-soft); font-size:.85rem;
+        margin-top:5rem;
+        padding:3rem 1.2rem;
+        text-align:center;
+        border-top:1px solid rgba(255,255,255,.08);
+        color:var(--text-soft);
+        font-size:.85rem;
     }
 
     /* RESPONSIVIDADE */
-    @media(max-width:900px){ .social-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media(max-width:900px){
+        .social-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media(max-width:768px){
         .hero{ padding-top:1rem; }
         .hero-card{ padding:1.2rem; border-radius:30px; }
         .metrics{ grid-template-columns:1fr; }
         .hero p{ font-size:.96rem; }
+        
         .gear-1{ width:250px; height:250px; left:-80px; }
         .gear-2{ width:150px; height:150px; right: 140px; top: 25%; }
         .gear-3{ width:350px; height:350px; right:-100px; top: 12%; }
         .gear-4{ width:120px; height:120px; left:60%; }
+        
         .method-grid { grid-template-columns: 1fr; }
+        
         .social-grid { grid-template-columns: 1fr; }
+        /* Voltar ao layout horizontal para cards de 1 coluna no mobile */
         .social-card { flex-direction: row; text-align: left; padding: 1.2rem; }
         .social-icon { margin-right: 1rem; margin-bottom: 0; width: 50px; height: 50px; border-radius: 12px; }
         .social-icon svg { width: 26px; height: 26px; }
@@ -374,23 +573,30 @@
 <body>
 
     <div class="gears-bg">
+        <!-- Definições Globais de Design (Gradientes e Filtros) -->
         <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
             <defs>
+                <!-- Gradiente para o letreiro principal, engrenagens e logo Insta -->
                 <linearGradient id="themeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#ff1d3c" />
                     <stop offset="50%" stop-color="#8b1fd3" />
                     <stop offset="100%" stop-color="#315cff" />
                 </linearGradient>
+
+                <!-- Gradiente sutil para engrenagens -->
                 <linearGradient id="gearGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#315cff" stop-opacity="0.3"></stop>
                     <stop offset="50%" stop-color="#5ee7ff" stop-opacity="0.2"></stop>
                     <stop offset="100%" stop-color="#ff1d3c" stop-opacity="0.25"></stop>
                 </linearGradient>
+
+                <!-- Gradiente idêntico ao letreiro para a mãozinha do Insta -->
                 <linearGradient id="igGradientHand" x1="0%" y1="100%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#ff1d3c" />
                     <stop offset="50%" stop-color="#8b1fd3" />
                     <stop offset="100%" stop-color="#315cff" />
                 </linearGradient>
+
                 <filter id="cinematicGlow" x="-50%" y="-50%" width="200%" height="200%">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"></feGaussianBlur>
                     <feComponentTransfer in="blur" result="colorBleed">
@@ -406,7 +612,7 @@
             </defs>
         </svg>
 
-        <!-- Engrenagens SVG -->
+        <!-- Engrenagens SVG Mantidas -->
         <svg class="gear gear-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#cinematicGlow)">
                 <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
@@ -468,7 +674,6 @@
         <section class="hero">
             <div class="hero-card">
                 <div class="hero-cover">
-                    <!-- Nome correto da imagem de capa -->
                     <img src="capa_ofc.png" alt="Capa visual do projeto ExataMente PRO">
                 </div>
                 <div class="badge">
@@ -484,7 +689,7 @@
                 </h2>
 
                 <p>
-                    Explicando fenómenos virais, falhas estruturais, ilusões do quotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.
+                    Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.
                 </p>
 
                 <div class="metrics">
@@ -503,12 +708,12 @@
                 </div>
 
                 <div class="cta-area">
-                    <a href="#arsenal" class="btn-primary">Acompanhe a Matriz</a>
+                    <a href="#redes" class="btn-primary">Acompanhe a Matriz</a>
                 </div>
             </div>
         </section>
 
-        <!-- SEÇÃO: O MÉTODO -->
+        <!-- SEÇÃO: O MÉTODO (ALINHADO AO CENTRO) -->
         <section class="method-section">
             <h2 class="section-title">
                 Como funciona a <span>Engenharia Reversa</span>
@@ -522,7 +727,7 @@
                 <div class="method-card">
                     <span class="step">Fase 02</span>
                     <h3>⚙️ O Cálculo</h3>
-                    <p>Aplicamos os princípios estruturais, mecânica dos fluidos, tensão e óptica para descobrir qual é o algoritmo físico a operar nos bastidores.</p>
+                    <p>Aplicamos os princípios estruturais, mecânica dos fluidos, tensão e óptica para descobrir qual é o algoritmo físico operando nos bastidores.</p>
                 </div>
                 <div class="method-card">
                     <span class="step">Fase 03</span>
@@ -532,93 +737,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO: O ARSENAL (VITRINE ESTILO MERCADO LIVRE) -->
-        <section class="product-section" id="arsenal">
-            <h2 class="section-title">
-                O <span>Arsenal</span>
-            </h2>
-            <p style="color: var(--text-soft); font-size: 1rem; margin-top: -1rem; margin-bottom: 1rem; max-width: 600px;">
-                Produtos de tecnologia e hardware analisados e recomendados sob a ótica da nossa matriz.
-            </p>
-
-            <div class="product-grid">
-                
-                <!-- PRODUTO 1: Fone Pro 4 -->
-                <div class="product-card">
-                    <div class="product-image-box">
-                        <img src="fone.webp" alt="Fone de Ouvido Bluetooth Pro 4">
-                    </div>
-                    
-                    <!-- Etiqueta Mercado Livre Laranja -->
-                    <div class="product-badges">
-                        <span class="badge-bestseller">MAIS VENDIDO</span>
-                    </div>
-
-                    <h3 class="product-title">Fone De Ouvido Bluetooth Sem Fio Bateria de Longa Duração Pro 4 Branco Conecta Rápido Fast Plug</h3>
-                    
-                    <!-- Avaliações Estilo Mercado Livre -->
-                    <div class="product-rating">
-                        <span class="stars">4.3 ★★★★☆</span>
-                        <span class="rating-number">(9943)</span>
-                    </div>
-
-                    <!-- Área de Preços Exata do Meli -->
-                    <div class="product-pricing-area">
-                        <div class="old-price"><s>R$ 53,99</s></div>
-                        <div class="current-price-row">
-                            <h2 class="product-price"><span>R$</span> 20<span>,52</span></h2>
-                            <span class="discount-badge">61% OFF</span>
-                        </div>
-                        <div class="shipping-info">Chegará grátis amanhã</div>
-                    </div>
-
-                    <a href="https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-sem-fio-bateria-de-longa-duraco-pro-4-branco-conecta-rapido-fast-plug/p/MLB25263382?pdp_filters=item_id%3AMLB4617283695#polycard_client=wishlist&wid=MLB4617283695&sid=bookmarks" target="_blank" class="btn-buy">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/>
-                        </svg>
-                        Comprar no Mercado Livre
-                    </a>
-                </div>
-
-                <!-- PRODUTO 2: Kit T-Wolf TF800 -->
-                <div class="product-card">
-                    <div class="product-image-box">
-                        <img src="teclado.webp" alt="Kit Gamer T-Wolf TF800">
-                    </div>
-
-                    <div class="product-badges">
-                        <!-- Podemos usar a tag para "RECOMENDADO" ou manter consistência -->
-                        <span class="badge-bestseller" style="background-color: var(--meli-blue);">RECOMENDADO</span>
-                    </div>
-
-                    <h3 class="product-title">Kit De Teclado E Mouse Gamer T-Wolf TF800 4 Em 1 Preto</h3>
-                    
-                    <div class="product-rating">
-                        <span class="stars">4.8 ★★★★★</span>
-                        <span class="rating-number">(1240)</span>
-                    </div>
-
-                    <div class="product-pricing-area">
-                        <div class="old-price"><s>R$ 199,90</s></div>
-                        <div class="current-price-row">
-                            <h2 class="product-price"><span>R$</span> 119<span>,90</span></h2>
-                            <span class="discount-badge">40% OFF</span>
-                        </div>
-                        <div class="shipping-info">Frete grátis</div>
-                    </div>
-
-                    <a href="https://www.mercadolivre.com.br/kit-de-teclado-e-mouse-gamer-twolf-tf800-4-em-1-cor-usa-teclado-preto/p/MLB22843008?pdp_filters=item_id%3AMLB5271791320#polycard_client=wishlist&wid=MLB5271791320&sid=bookmarks" target="_blank" class="btn-buy">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/>
-                        </svg>
-                        Comprar no Mercado Livre
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- REDES SOCIAIS -->
+        <!-- REDES SOCIAIS (UMA LINHA E MAOZINHA ANIMADA) -->
         <section class="section" id="redes">
             <h2 class="section-title">
                 Conecte-se ao <span>Sistema</span>
@@ -637,9 +756,10 @@
                         <h3>Instagram</h3>
                         <p>@exatamente_pro</p>
                     </div>
+                    <!-- Nova Maozinha Animada -->
                     <div class="social-click-hand">
                         <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
                         </svg>
                     </div>
                 </a>
@@ -657,7 +777,7 @@
                     </div>
                     <div class="social-click-hand">
                         <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
                         </svg>
                     </div>
                 </a>
@@ -675,7 +795,7 @@
                     </div>
                     <div class="social-click-hand">
                         <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
                         </svg>
                     </div>
                 </a>
@@ -693,7 +813,7 @@
                     </div>
                     <div class="social-click-hand">
                         <svg viewBox="0 0 24 24">
-                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6-1.25a.5.5 0 0 1-.8 0z"/>
+                            <path d="M17.012 11.81l-10.012-7.81v15.62l10.012-7.81zm-.812 0l-7.2 5.62v-11.24l7.2 5.62zm1.8 1.25l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0zm1.8-3.75l-1.6-1.25a.5.5 0 0 1 0-.8l1.6-1.25a.5.5 0 0 1 .8 0l1.6 1.25a.5.5 0 0 1 0 .8l-1.6 1.25a.5.5 0 0 1-.8 0z"/>
                         </svg>
                     </div>
                 </a>
@@ -702,7 +822,7 @@
 
             <div class="manifesto">
                 <h2>O Manifesto</h2>
-                <p>O ExataMente PRO transforma engenharia em entretenimento inteligente. Onde muitos enxergam "mágica", nós mostramos <strong>física, mecânica e ciência aplicada</strong>.</p>
+                <p>O ExataMente PRO transforma engenharia em entretenimento inteligente. Onde muitos enxergam “mágica”, nós mostramos <strong>física, mecânica e ciência aplicada</strong>.</p>
                 <p style="margin-top:1rem;">Menos conteúdo genérico. Mais profundidade visual, clareza técnica e storytelling científico.</p>
             </div>
         </section>
@@ -716,6 +836,7 @@
     </footer>
 
     <script>
+    // JavaScript Mantido e Otimizado
     let isScrolling = false;
 
     window.addEventListener('scroll', () => {
