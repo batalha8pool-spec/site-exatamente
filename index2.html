@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO e Meta Tags -->
     <title>ExataMente PRO | A Engenharia por trás do Hype </title>
-    <meta name="description" content="Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
-    <meta property="og:title" content="ExataMente PRO">
-    <meta property="og:description" content="A engenharia por trás do Hype. Ciência, física e mecânica aplicada.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Explicando fenómenos virais, falhas estruturais, ilusões do quotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
     
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
@@ -59,12 +56,12 @@
     body::before{
         content:''; position:fixed; inset:0;
         background: linear-gradient(to bottom, rgba(8,10,18,.85), rgba(14,18,30,.92));
-        z-index:-4; /* Jogado ainda mais para trás para acomodar as partículas */
+        z-index:-3;
     }
     body::after{
         content:''; position:fixed; inset:-20%;
         background: radial-gradient(circle, rgba(255,255,255,.03), transparent 60%);
-        animation:bgMove 20s linear infinite; z-index:-3; pointer-events:none;
+        animation:bgMove 20s linear infinite; z-index:-2; pointer-events:none;
     }
     @keyframes bgMove{
         0%{ transform:translate(0,0) rotate(0deg); }
@@ -75,26 +72,12 @@
     /* =========================================
        DESIGN DAS ENGRENAGENS
     ========================================= */
-    .gears-bg{ position:fixed; inset:0; overflow:hidden; z-index:-2; pointer-events:none; }
+    .gears-bg{ position:fixed; inset:0; overflow:hidden; z-index:-1; pointer-events:none; }
     .gear{ position:absolute; will-change: transform; transform-origin: center center; }
     .gear-1{ width:450px; height:450px; left:-120px; top:5%; opacity: 0.7; }
     .gear-2{ width:250px; height:250px; right:280px; top:32%; opacity: 0.5; }
     .gear-3{ width:500px; height:500px; right:-150px; top:15%; opacity: 0.35; }
     .gear-4{ width:200px; height:200px; left:65%; bottom:5%; opacity: 0.4; }
-
-    /* =========================================
-       FLUXO DA MATRIZ (PARTÍCULAS BACKGROUND)
-       Fica à frente das engrenagens (-2), mas atrás do conteúdo real (0 ou mais)
-    ========================================= */
-    #dataFlowCanvas {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1; 
-        pointer-events: none; /* Deixa o clique passar para o site, mas vamos capturar o mouse no window */
-    }
 
     /* =========================================
        HEADER
@@ -120,7 +103,7 @@
     /* =========================================
        HERO
     ========================================= */
-    .hero{ max-width:1200px; margin:auto; padding:2rem 1.2rem 4rem; position: relative; z-index: 10; }
+    .hero{ max-width:1200px; margin:auto; padding:2rem 1.2rem 4rem; }
     .hero-card{
         position:relative; overflow:hidden; border-radius:36px;
         background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
@@ -170,7 +153,7 @@
     /* =========================================
        O MÉTODO
     ========================================= */
-    .method-section { max-width: 1200px; margin: 4rem auto 0; padding: 0 1.2rem; position: relative; z-index: 10;}
+    .method-section { max-width: 1200px; margin: 4rem auto 0; padding: 0 1.2rem; }
     .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .method-card {
         background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05);
@@ -187,7 +170,7 @@
     /* =========================================
        O ARSENAL (VITRINE ESTILO MELI)
     ========================================= */
-    .product-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; position: relative; z-index: 10; }
+    .product-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; }
     .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
     .product-card {
         background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
@@ -209,27 +192,85 @@
     }
     .product-card:hover .product-image-box img { transform: scale(1.08); }
     
+    /* Etiqueta Mais Vendido */
     .badge-bestseller {
         background-color: var(--meli-orange);
-        color: #fff; font-size: 0.65rem; font-weight: 800;
-        padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;
-        display: inline-block; margin-bottom: 0.6rem; letter-spacing: 0.05em;
+        color: #fff;
+        font-size: 0.65rem;
+        font-weight: 800;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-bottom: 0.6rem;
+        letter-spacing: 0.05em;
     }
+
     .product-title {
         font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.4;
         margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2;
         -webkit-box-orient: vertical; overflow: hidden;
     }
-    .product-rating { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.2rem; font-size: 0.85rem; }
-    .stars { color: var(--meli-blue); font-size: 1rem; letter-spacing: 1px; }
-    .rating-number { color: var(--text-soft); }
-    .product-pricing-area { margin-top: auto; margin-bottom: 1.2rem; display: flex; flex-direction: column; }
-    .old-price { color: #8c8c8c; text-decoration: line-through; font-size: 0.85rem; margin-bottom: 0.1rem; }
-    .current-price-row { display: flex; align-items: center; gap: 0.6rem; }
-    .product-price { font-size: 1.8rem; font-weight: 900; color: #fff; margin: 0; }
-    .product-price span { font-size: 0.9rem; font-weight: 600; color: var(--text-soft); vertical-align: super; }
-    .discount-badge { color: var(--meli-green); font-size: 0.9rem; font-weight: 600; }
-    .shipping-info { color: var(--meli-green); font-size: 0.85rem; font-weight: 700; margin-top: 0.4rem; }
+
+    /* Avaliações / Estrelas */
+    .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-bottom: 1.2rem;
+        font-size: 0.85rem;
+    }
+    .stars {
+        color: var(--meli-blue);
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+    .rating-number {
+        color: var(--text-soft);
+    }
+
+    /* Área de Preço */
+    .product-pricing-area {
+        margin-top: auto;
+        margin-bottom: 1.2rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .old-price {
+        color: #8c8c8c;
+        text-decoration: line-through;
+        font-size: 0.85rem;
+        margin-bottom: 0.1rem;
+    }
+    .current-price-row {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+    .product-price { 
+        font-size: 1.8rem; 
+        font-weight: 900; 
+        color: #fff; 
+        margin: 0; 
+    }
+    .product-price span { 
+        font-size: 0.9rem; 
+        font-weight: 600; 
+        color: var(--text-soft); 
+        vertical-align: super; /* Para o R$ ficar alto como no Meli */
+    }
+    .discount-badge {
+        color: var(--meli-green);
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    .shipping-info {
+        color: var(--meli-green);
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-top: 0.4rem;
+    }
+
     .btn-buy {
         display: flex; align-items: center; justify-content: center; gap: 0.5rem;
         width: 100%; padding: 0.9rem; border-radius: 14px; background: #FFE600; 
@@ -241,7 +282,7 @@
     /* =========================================
        REDES SOCIAIS
     ========================================= */
-    .section{ max-width:1200px; margin:auto; padding:4rem 1.2rem 5rem; position: relative; z-index: 10;}
+    .section{ max-width:1200px; margin:auto; padding:4rem 1.2rem 5rem; }
     .section-title{ font-size:clamp(1.8rem,5vw,2.8rem); font-weight: 900; letter-spacing:-0.06em; margin-bottom:2rem; }
     .section-title span{ color:var(--primary); }
     .social-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
@@ -304,7 +345,7 @@
     .manifesto p{ color:var(--text-soft); line-height:1.9; font-size:1rem; }
     .manifesto strong{ color:var(--primary); }
     footer{
-        margin-top:5rem; padding:3rem 1.2rem; text-align:center; position: relative; z-index: 10;
+        margin-top:5rem; padding:3rem 1.2rem; text-align:center;
         border-top:1px solid rgba(255,255,255,.08); color:var(--text-soft); font-size:.85rem;
     }
 
@@ -331,9 +372,6 @@
     </style>
 </head>
 <body>
-
-    <!-- CANVA GLOBAL DE PARTÍCULAS (MUDOU PARA O FUNDO) -->
-    <canvas id="dataFlowCanvas"></canvas>
 
     <div class="gears-bg">
         <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
@@ -446,7 +484,7 @@
                 </h2>
 
                 <p>
-                    Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.
+                    Explicando fenómenos virais, falhas estruturais, ilusões do quotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.
                 </p>
 
                 <div class="metrics">
@@ -511,17 +549,20 @@
                         <img src="fone.webp" alt="Fone de Ouvido Bluetooth Pro 4">
                     </div>
                     
+                    <!-- Etiqueta Mercado Livre Laranja -->
                     <div class="product-badges">
                         <span class="badge-bestseller">MAIS VENDIDO</span>
                     </div>
 
                     <h3 class="product-title">Fone De Ouvido Bluetooth Sem Fio Bateria de Longa Duração Pro 4 Branco Conecta Rápido Fast Plug</h3>
                     
+                    <!-- Avaliações Estilo Mercado Livre -->
                     <div class="product-rating">
                         <span class="stars">4.3 ★★★★☆</span>
                         <span class="rating-number">(9943)</span>
                     </div>
 
+                    <!-- Área de Preços Exata do Meli -->
                     <div class="product-pricing-area">
                         <div class="old-price"><s>R$ 53,99</s></div>
                         <div class="current-price-row">
@@ -546,6 +587,7 @@
                     </div>
 
                     <div class="product-badges">
+                        <!-- Podemos usar a tag para "RECOMENDADO" ou manter consistência -->
                         <span class="badge-bestseller" style="background-color: var(--meli-blue);">RECOMENDADO</span>
                     </div>
 
@@ -657,16 +699,13 @@
                 </a>
 
             </div>
-        </section>
 
-        <section class="section">
             <div class="manifesto">
                 <h2>O Manifesto</h2>
                 <p>O ExataMente PRO transforma engenharia em entretenimento inteligente. Onde muitos enxergam "mágica", nós mostramos <strong>física, mecânica e ciência aplicada</strong>.</p>
                 <p style="margin-top:1rem;">Menos conteúdo genérico. Mais profundidade visual, clareza técnica e storytelling científico.</p>
             </div>
         </section>
-
     </main>
 
     <footer>
@@ -676,171 +715,25 @@
         <p>© 2026 ExataMente PRO — Engenharia, ciência e conteúdo visual.</p>
     </footer>
 
-    <!-- SCRIPT DAS PARTÍCULAS EM BACKGROUND -->
     <script>
-        const dataCanvas = document.getElementById('dataFlowCanvas');
-        const dataCtx = dataCanvas.getContext('2d');
+    let isScrolling = false;
 
-        // Ajustar o canvas para preencher a janela toda
-        function resizeCanvas() {
-            dataCanvas.width = window.innerWidth;
-            dataCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+    window.addEventListener('scroll', () => {
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                const scroll = window.scrollY;
+                const gears = document.querySelectorAll('.gear');
 
-        let particleCount = window.innerWidth < 768 ? 80 : 150; 
-        const connectionDist = 130;  
-        const mouseRepelRadius = 150; 
-        const repelForce = 5;        
-        const returnForce = 0.02;   
-
-        let particles = [];
-        let simMouse = { x: null, y: null, active: false };
-
-        const colors = {
-            cyan: "#5ee7ff",
-            red: "#ff1d3c"
-        };
-
-        class Particle {
-            constructor() {
-                this.homeX = Math.random() * dataCanvas.width;
-                this.homeY = Math.random() * dataCanvas.height;
-                this.x = this.homeX;
-                this.y = this.homeY;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2 + 1;
-                this.color = Math.random() > 0.2 ? colors.cyan : colors.red; 
-            }
-
-            draw() {
-                dataCtx.beginPath();
-                dataCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                dataCtx.fillStyle = this.color;
+                gears[0].style.transform = `translateY(${scroll * 0.08}px) rotate(${scroll * 0.15}deg)`;
+                gears[1].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * -0.25}deg)`;
+                gears[2].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * 0.12}deg)`;
+                gears[3].style.transform = `translateY(${scroll * 0.18}px) rotate(${scroll * -0.20}deg)`;
                 
-                if(this.color === colors.red) {
-                    dataCtx.shadowBlur = 8; dataCtx.shadowColor = colors.red;
-                } else {
-                    dataCtx.shadowBlur = 4; dataCtx.shadowColor = colors.cyan;
-                }
-                
-                dataCtx.fill();
-                dataCtx.shadowBlur = 0; 
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x + this.radius > dataCanvas.width || this.x - this.radius < 0) this.vx = -this.vx;
-                if (this.y + this.radius > dataCanvas.height || this.y - this.radius < 0) this.vy = -this.vy;
-
-                if (simMouse.active) {
-                    let dx = simMouse.x - this.x;
-                    let dy = simMouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < mouseRepelRadius) {
-                        let force = (mouseRepelRadius - distance) / mouseRepelRadius;
-                        let angle = Math.atan2(dy, dx);
-                        
-                        this.x -= Math.cos(angle) * force * repelForce;
-                        this.y -= Math.sin(angle) * force * repelForce;
-                    }
-                }
-
-                let dxHome = this.homeX - this.x;
-                let dyHome = this.homeY - this.y;
-                this.x += dxHome * returnForce;
-                this.y += dyHome * returnForce;
-            }
+                isScrolling = false;
+            });
+            isScrolling = true;
         }
-
-        function initDataFlow() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function drawConnections() {
-            dataCtx.shadowBlur = 0; 
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p1 = particles[i];
-                    let p2 = particles[j];
-                    let dx = p1.x - p2.x;
-                    let dy = p1.y - p2.y;
-                    let dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < connectionDist) {
-                        let opacity = 1 - (dist / connectionDist);
-                        dataCtx.strokeStyle = `rgba(94, 231, 255, ${opacity * 0.15})`; 
-                        dataCtx.lineWidth = 0.5;
-                        dataCtx.beginPath();
-                        dataCtx.moveTo(p1.x, p1.y);
-                        dataCtx.lineTo(p2.x, p2.y);
-                        dataCtx.stroke();
-                    }
-                }
-            }
-        }
-
-        function loopDataFlow() {
-            dataCtx.clearRect(0, 0, dataCanvas.width, dataCanvas.height);
-
-            drawConnections();
-
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-            }
-
-            requestAnimationFrame(loopDataFlow);
-        }
-
-        // Como o canvas está no fundo, capturamos o mouse no objeto 'window'
-        window.addEventListener('mousemove', (e) => {
-            simMouse.x = e.clientX;
-            simMouse.y = e.clientY;
-            simMouse.active = true;
-        });
-        window.addEventListener('mouseleave', () => { simMouse.active = false; });
-        
-        window.addEventListener('touchstart', (e) => { 
-            simMouse.x = e.touches[0].clientX;
-            simMouse.y = e.touches[0].clientY;
-            simMouse.active = true;
-        }, {passive: true});
-        window.addEventListener('touchmove', (e) => { 
-            simMouse.x = e.touches[0].clientX;
-            simMouse.y = e.touches[0].clientY;
-        }, {passive: true});
-        window.addEventListener('touchend', () => { simMouse.active = false; });
-
-        initDataFlow();
-        loopDataFlow();
-
-        // SCRIPT DAS ENGRENAGENS
-        let isScrolling = false;
-        window.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                window.requestAnimationFrame(() => {
-                    const scroll = window.scrollY;
-                    const gears = document.querySelectorAll('.gear');
-
-                    gears[0].style.transform = `translateY(${scroll * 0.08}px) rotate(${scroll * 0.15}deg)`;
-                    gears[1].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * -0.25}deg)`;
-                    gears[2].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * 0.12}deg)`;
-                    gears[3].style.transform = `translateY(${scroll * 0.18}px) rotate(${scroll * -0.20}deg)`;
-                    
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
-        });
+    });
     </script>
 </body>
 </html>
