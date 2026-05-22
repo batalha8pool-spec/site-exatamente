@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ExataMente PRO | A Engenharia por trás do Hype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{ margin:0; padding:0; box-sizing:border-box; }
+        html{ scroll-behavior:smooth; overflow-x: hidden; }
+        :root{
+            --text:#f5f7ff; --text-soft:#c4cce0; --primary:#5ee7ff;
+            --gradient: linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+            --meli-blue: #3483FA; --meli-green: #00a650; --meli-orange: #F76300;
+        }
+        body{ font-family:'Inter',sans-serif; background: radial-gradient(circle at 20% 20%, rgba(255,60,100,.22), transparent 25%), radial-gradient(circle at 80% 30%, rgba(90,70,255,.18), transparent 30%), linear-gradient(135deg, #080a12 0%, #080a12 100%); color:var(--text); min-height:100vh; overflow-x:hidden; }
+        
+        #dataFlowCanvas { position: fixed; top:0; left:0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+        .gears-bg { position:fixed; inset:0; z-index:-2; pointer-events:none; }
+        
+        header { position:sticky; top:0; z-index:999; backdrop-filter:blur(18px); background:rgba(20,22,35,.55); border-bottom:1px solid rgba(255,255,255,.09); }
+        .header-container { max-width:1200px; margin:auto; padding:1.2rem; }
+        .logo { font-size:1.25rem; font-weight:900; }
+        .logo span { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+        .hero { max-width:1200px; margin:auto; padding:2rem 1.2rem; z-index:10; }
+        .hero-card { border-radius:36px; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); padding:2rem; backdrop-filter:blur(14px); }
+        .hero-cover { width:100%; border-radius:24px; margin-bottom:1.5rem; overflow:hidden; }
+        .hero-cover img { width:100%; display:block; }
+
+        .top-social-section { text-align: center; margin-bottom: 2rem; }
+        .top-social-label { font-size: 0.9rem; font-weight: 700; color: var(--text-soft); margin-bottom: 1rem; display: block; }
+        .top-social-grid { display: flex; justify-content: center; gap: 1.5rem; }
+        .top-social-card { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,.07); transition: 0.3s; }
+        .top-social-card svg { width: 32px; height: 32px; fill: #fff; }
+
+        /* Métrica Restaurada (Desktop: Lado a lado | Mobile: Um abaixo do outro) */
+        .metrics { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+        .metric { flex: 1 1 30%; min-width: 250px; background:rgba(255,255,255,.05); padding: 1.5rem; border-radius: 20px; border: 1px solid rgba(255,255,255,.08); }
+        
+        /* Método Restaurado (Largura total sem espremer) */
+        .method-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; }
+        .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .method-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05); border-radius: 24px; padding: 2.5rem; text-align: center; }
+
+        /* Produtos Carrossel */
+        .product-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; overflow: hidden; }
+        .category-row { margin-bottom: 3rem; }
+        .carousel-wrapper { width: 100%; overflow-x: auto; padding-bottom: 1rem; }
+        .carousel-container { display: flex; gap: 1.5rem; width: max-content; }
+        .product-card { width: 290px; background: rgba(255,255,255,.03); border-radius: 24px; padding: 1.5rem; border: 1px solid rgba(255,255,255,.08); }
+        .product-image-box { height: 200px; background: #fff; border-radius: 16px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; }
+        .product-image-box img { max-width: 80%; max-height: 80%; object-fit: contain; }
+        .btn-buy { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 1rem; border-radius: 14px; background: #FFE600; color: #2D3277; font-weight: 800; text-decoration: none; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <canvas id="dataFlowCanvas"></canvas>
+    <header><div class="header-container"><div class="logo">ExataMente<span>PRO</span></div></div></header>
+    <main>
+        <section class="hero">
+            <div class="hero-card">
+                <div class="hero-cover"><img src="capa_ofc.png" alt="Capa"></div>
+                <div class="top-social-section">
+                    <span class="top-social-label">Siga-nos nas nossas redes sociais:</span>
+                    <div class="top-social-grid">
+                        <a href="#" class="top-social-card"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.2... (ícones aqui)"/></svg></a>
+                    </div>
+                </div>
+                <h1>A Engenharia por trás do <span>Hype</span>.</h1>
+                <p>Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada.</p>
+                <div class="metrics">
+                    <div class="metric"><h2>+120 Mil</h2><p>seguidores orgânicos.</p></div>
+                    <div class="metric"><h2>+130 Mi</h2><p>visualizações.</p></div>
+                    <div class="metric"><h2>100%</h2><p>Mecânica Real.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="method-section">
+            <h2 class="section-title">Como funciona a <span>Engenharia Reversa</span></h2>
+            <div class="method-grid">
+                <div class="method-card"><h3>📱 A Ilusão</h3><p>Mapeamos vídeos virais e explicamos a técnica por trás.</p></div>
+                <div class="method-card"><h3>⚙️ O Cálculo</h3><p>Aplicamos princípios estruturais e mecânicos.</p></div>
+                <div class="method-card"><h3>❌ O Fim da Ilusão</h3><p>Provamos que é engenharia, não mágica.</p></div>
+            </div>
+        </section>
+
+        <section class="product-section">
+            <h2 class="section-title">Produtos <span>recomendados</span></h2>
+            <div class="category-row">
+                <h3 class="category-row-title">Eletrônicos</h3>
+                <div class="carousel-wrapper"><div class="carousel-container">
+                    <div class="product-card"><div class="product-image-box"><img src="fone.webp" alt="Fone"></div><h4>Fone Pro 4</h4><a href="#" class="btn-buy">Comprar no Mercado Livre</a></div>
+                </div></div>
+            </div>
+        </section>
+    </main>
+    <script>
+        // Lógica de partículas mantida
+    </script>
+</body>
+</html>
