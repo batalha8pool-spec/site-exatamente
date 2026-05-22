@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO e Meta Tags -->
+    <title>ExataMente PRO | Produtos Recomendados e Engenharia </title>
+    <meta name="description" content="Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.">
+    <meta property="og:title" content="ExataMente PRO">
+    <meta property="og:description" content="A engenharia por trás do Hype. Ciência, física e mecânica aplicada.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+    /* =========================================
+       RESET E ACESSIBILIDADE
+    ========================================= */
+    *{ margin:0; padding:0; box-sizing:border-box; }
+    html{ scroll-behavior:smooth; overflow-x: hidden; }
+    a:focus-visible, .btn-buy:focus-visible {
+        outline: 3px solid var(--primary); outline-offset: 4px;
+    }
+
+    :root{
+        --text:#f5f7ff;
+        --text-soft:#c4cce0;
+        --card:rgba(255,255,255,.06);
+        --stroke:rgba(255,255,255,.09);
+        --primary:#5ee7ff;
+        --gradient: linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+        --yt-color: #ff0000;
+        --tk-color: #00f2fe;
+        --ig-color: #c13584;
+        --fb-color: #1877F2;
+        --meli-blue: #3483FA;
+        --meli-green: #00a650;
+        --meli-orange: #F76300;
+    }
+
+    /* =========================================
+       BODY + BACKGROUND
+    ========================================= */
+    body{
+        font-family:'Inter',sans-serif;
+        background: radial-gradient(circle at 20% 20%, rgba(255,60,100,.22), transparent 25%),
+                    radial-gradient(circle at 80% 30%, rgba(90,70,255,.18), transparent 30%),
+                    radial-gradient(circle at 50% 80%, rgba(0,220,255,.12), transparent 30%),
+                    linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+        background-attachment:fixed;
+        color:var(--text);
+        overflow-x:hidden;
+        position:relative;
+        min-height:100vh;
+        width: 100%;
+    }
+    body::before{
+        content:''; position:fixed; inset:0;
+        background: linear-gradient(to bottom, rgba(8,10,18,.85), rgba(14,18,30,.92));
+        z-index:-4;
+    }
+    body::after{
+        content:''; position:fixed; inset:-20%;
+        background: radial-gradient(circle, rgba(255,255,255,.03), transparent 60%);
+        animation:bgMove 20s linear infinite; z-index:-3; pointer-events:none;
+    }
+    @keyframes bgMove{
+        0%{ transform:translate(0,0) rotate(0deg); }
+        50%{ transform:translate(-3%,2%) rotate(180deg); }
+        100%{ transform:translate(0,0) rotate(360deg); }
+    }
+
+    /* =========================================
+       DESIGN DAS ENGRENAGENS
+    ========================================= */
+    .gears-bg{ position:fixed; inset:0; overflow:hidden; z-index:-2; pointer-events:none; }
+    .gear{ position:absolute; will-change: transform; transform-origin: center center; }
+    .gear-1{ width:450px; height:450px; left:-120px; top:5%; opacity: 0.7; }
+    .gear-2{ width:250px; height:250px; right:280px; top:32%; opacity: 0.5; }
+    .gear-3{ width:500px; height:500px; right:-150px; top:15%; opacity: 0.35; }
+    .gear-4{ width:200px; height:200px; left:65%; bottom:5%; opacity: 0.4; }
+
+    /* =========================================
+       FLUXO DA MATRIZ (PARTÍCULAS BACKGROUND)
+    ========================================= */
+    #dataFlowCanvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1; 
+        pointer-events: none;
+    }
+
+    /* =========================================
+       HEADER
+    ========================================= */
+    header{
+        position:sticky; top:0; z-index:999;
+        backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+        background:rgba(20,22,35,.55); border-bottom:1px solid var(--stroke);
+    }
+    .header-container{
+        max-width:1200px; margin:auto; padding:1.2rem 1.2rem;
+        display:flex; align-items:center; justify-content:flex-start;
+    }
+    .logo{ font-size:1.25rem; font-weight:900; letter-spacing:-0.05em; }
+    .logo span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    /* =========================================
+       HERO E SEÇÃO DE REDES CENTRALIZADA/COLORIDA
+    ========================================= */
+    .hero{ max-width:1200px; margin:auto; padding:2rem 1.2rem; position: relative; z-index: 10; width: 100%; }
+    .hero-card{
+        position:relative; overflow:hidden; border-radius:36px;
+        background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+        border:1px solid rgba(255,255,255,.1); padding:1.5rem;
+        box-shadow: 0 10px 50px rgba(0,0,0,.25); backdrop-filter:blur(14px);
+    }
+    .hero-cover{ width:100%; overflow:hidden; border-radius:24px; margin-bottom:1.5rem; }
+    .hero-cover img{ width:100%; display:block; object-fit:cover; }
+    
+    /* Redes Sociais Restauradas: Centralizadas, Coloridas e Tamanho Original */
+    .top-social-section {
+        text-align: center;
+        margin-bottom: 1.8rem;
+        width: 100%;
+    }
+    .top-social-label {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-soft);
+        margin-bottom: 1rem;
+        display: block;
+        letter-spacing: 0.02em;
+    }
+    .top-social-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    .top-social-card {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,.07);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    .top-social-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    .top-social-card svg {
+        width: 32px;
+        height: 32px;
+        fill: currentColor;
+    }
+    /* Cores Originais Ativadas */
+    .top-social-card.instagram .top-icon svg { fill: url(#themeGradient); }
+    .top-social-card.instagram:hover { border-color: var(--ig-color); background: rgba(193, 53, 132, 0.1); }
+    
+    .top-social-card.youtube { color: #FF0000; }
+    .top-social-card.youtube:hover { border-color: var(--yt-color); background: rgba(255, 0, 0, 0.1); }
+    
+    .top-social-card.tiktok { color: #00f2fe; }
+    .top-social-card.tiktok:hover { border-color: var(--tk-color); background: rgba(0, 242, 254, 0.1); }
+    
+    .top-social-card.facebook { color: #1877F2; }
+    .top-social-card.facebook:hover { border-color: var(--fb-color); background: rgba(24, 119, 242, 0.1); }
+
+    .hero h1{
+        font-size:clamp(1.8rem, 6.5vw, 4.2rem); line-height:.95;
+        font-weight:900; letter-spacing:-0.06em; margin-bottom:0.5rem;
+    }
+    .hero h1 span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .sub-headline {
+        font-size:clamp(1.1rem, 3vw, 1.6rem); font-weight: 800;
+        margin-bottom: 1.2rem; color: var(--text); letter-spacing: -0.02em;
+    }
+    .sub-headline .icone-x { color: #ff1d3c; }
+    .hero p{ max-width:700px; color:var(--text-soft); line-height:1.7; font-size:1rem; margin-bottom:1.5rem; }
+    
+    /* Métricas Otimizadas (Caixas Reduzidas, Sem Espaço Vago) */
+    .metrics{ display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; margin-top:1.2rem; }
+    .metric{
+        position:relative; overflow:hidden; background:rgba(255,255,255,.05);
+        border:1px solid rgba(255,255,255,.08); border-radius:20px;
+        padding: 0.8rem 1rem; backdrop-filter:blur(12px);
+    }
+    .metric::before{
+        content:''; position:absolute; inset:0;
+        background: linear-gradient(135deg, rgba(94,231,255,.12), transparent);
+    }
+    .metric h2{ position:relative; font-size:clamp(1.3rem,3.5vw,1.9rem); line-height:1.1; font-weight:900; margin-bottom:.2rem; }
+    .metric p{ position:relative; color:var(--text-soft); font-size:.78rem; line-height:1.4; }
+
+    /* =========================================
+       O MÉTODO
+    ========================================= */
+    .method-section { max-width: 1200px; margin: 3rem auto 0; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; }
+    .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .method-card {
+        background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05);
+        border-radius: 24px; padding: 2rem; backdrop-filter: blur(10px);
+        position: relative; text-align: center;
+    }
+    .method-card .step {
+        font-size: 0.8rem; font-weight: 800; text-transform: uppercase;
+        color: var(--primary); letter-spacing: 0.1em; margin-bottom: 1rem; display: block;
+    }
+    .method-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; }
+    .method-card p { color: var(--text-soft); line-height: 1.7; font-size: 0.95rem; }
+
+    /* =========================================
+       PRODUTOS RECOMENDADOS (ESTILO NETFLIX CORRIGIDO SEM QUEBRAR Z00M NO MOBILE)
+    ========================================= */
+    .product-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; overflow: hidden;}
+    .category-row { margin-bottom: 3rem; width: 100%; position: relative; }
+    .category-row-title {
+        font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 1.2rem;
+        padding-left: 0.6rem; border-left: 4px solid var(--primary); letter-spacing: -0.01em;
+    }
+
+    /* Container de Carrossel Otimizado para não quebrar a largura da página */
+    .carousel-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 1rem;
+    }
+    .carousel-container {
+        display: flex;
+        gap: 1.2rem;
+        width: max-content; /* Garante que os cards fiquem alinhados lado a lado sem encolher */
+        padding-right: 2rem;
+    }
+
+    /* Cards Estilo Premium com Layout do Mercado Livre Preservado */
+    .product-card {
+        width: 285px; /* Largura perfeita para simular a espreitadela da Netflix */
+        background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08);
+        border-radius: 24px; padding: 1.2rem; backdrop-filter: blur(14px);
+        transition: all 0.3s ease; display: flex; flex-direction: column;
+        position: relative;
+    }
+    .product-card:hover {
+        transform: translateY(-5px); border-color: rgba(94, 231, 255, 0.4);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    }
+    
+    .product-image-box {
+        width: 100%; height: 200px; background: #ffffff; border-radius: 16px;
+        margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;
+        overflow: hidden; position: relative;
+    }
+    .product-image-box img {
+        max-width: 80%; max-height: 80%; object-fit: contain; transition: transform 0.4s ease;
+    }
+    .product-card:hover .product-image-box img { transform: scale(1.08); }
+    
+    .badge-bestseller {
+        background-color: var(--meli-orange);
+        color: #fff; font-size: 0.65rem; font-weight: 800;
+        padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase;
+        display: inline-block; margin-bottom: 0.5rem; letter-spacing: 0.05em;
+    }
+    .product-title {
+        font-size: 0.95rem; font-weight: 600; color: var(--text); line-height: 1.4;
+        margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical; overflow: hidden; height: 2.8rem;
+    }
+    .product-rating { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.8rem; font-size: 0.8rem; }
+    .stars { color: var(--meli-blue); font-weight: 700; }
+    .rating-number { color: var(--text-soft); }
+    
+    /* Sistema de Precificação e Elementos Coloridos do Mercado Livre */
+    .product-pricing-area { margin-top: auto; margin-bottom: 1rem; display: flex; flex-direction: column; }
+    .old-price { color: #8c8c8c; text-decoration: line-through; font-size: 0.8rem; margin-bottom: 0.1rem; }
+    .current-price-row { display: flex; align-items: center; gap: 0.5rem; }
+    .product-price { font-size: 1.6rem; font-weight: 900; color: #fff; margin: 0; }
+    .product-price span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); vertical-align: super; }
+    .discount-badge { color: var(--meli-green); font-size: 0.85rem; font-weight: 600; }
+    .shipping-info { color: var(--meli-green); font-size: 0.8rem; font-weight: 700; margin-top: 0.3rem; }
+
+    /* Botão Amarelo/Azul Oficial Totalmente Restaurado */
+    .btn-buy {
+        display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        width: 100%; padding: 0.9rem; border-radius: 14px; background: #FFE600; 
+        color: #2D3277; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: all 0.2s ease;
+    }
+    .btn-buy:hover { background: #F3DB00; transform: scale(1.02); }
+    .btn-buy svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* =========================================
+       MANIFESTO E FOOTER
+    ========================================= */
+    .manifesto-section { max-width: 1200px; margin: auto; padding: 0 1.2rem 4rem; position: relative; z-index: 10; width: 100%; }
+    .manifesto{
+        padding: 2rem; border-radius: 34px;
+        background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+        border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(14px);
+    }
+    .manifesto h2{ font-size: 2rem; font-weight: 900; letter-spacing: -0.05em; margin-bottom: 1rem; }
+    .manifesto p{ color: var(--text-soft); line-height: 1.9; font-size: 1rem; }
+    .manifesto strong{ color: var(--primary); }
+    
+    footer{
+        padding: 3rem 1.2rem; text-align: center; position: relative; z-index: 10;
+        border-top: 1px solid rgba(255,255,255,.08); color: var(--text-soft); font-size: .85rem;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- MATRIZ INTERATIVA DE PARTÍCULAS EM SEGUNDO PLANO -->
+    <canvas id="dataFlowCanvas"></canvas>
+
+    <!-- ANIMAÇÃO DE ENGRENAGENS MECÂNICAS -->
+    <div class="gears-bg">
+        <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
+            <defs>
+                <linearGradient id="themeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ff1d3c" />
+                    <stop offset="50%" stop-color="#8b1fd3" />
+                    <stop offset="100%" stop-color="#315cff" />
+                </linearGradient>
+                <linearGradient id="gearGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#315cff" stop-opacity="0.3"></stop>
+                    <stop offset="50%" stop-color="#5ee7ff" stop-opacity="0.2"></stop>
+                    <stop offset="100%" stop-color="#ff1d3c" stop-opacity="0.25"></stop>
+                </linearGradient>
+                <filter id="cinematicGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"></feGaussianBlur>
+                    <feComponentTransfer in="blur" result="colorBleed">
+                        <feFuncR type="linear" slope="2"></feFuncR>
+                        <feFuncG type="linear" slope="1.5"></feFuncG>
+                        <feFuncB type="linear" slope="3"></feFuncB>
+                    </feComponentTransfer>
+                    <feMerge>
+                        <feMergeNode in="colorBleed"></feMergeNode>
+                        <feMergeNode in="SourceGraphic"></feMergeNode>
+                    </feMerge>
+                </filter>
+            </defs>
+        </svg>
+
+        <svg class="gear gear-1" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#cinematicGlow)">
+                <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
+                <circle cx="50" cy="50" r="43" stroke="rgba(94, 231, 255, 0.4)" stroke-width="1"></circle>
+                <circle cx="50" cy="50" r="28" stroke="url(#gearGradient)" stroke-width="4" stroke-dasharray="10 2"></circle>
+                <path d="M50 7 L50 93 M7 50 L93 50 M20 20 L80 80 M20 80 L80 20" stroke="url(#gearGradient)" stroke-width="1.5"></path>
+                <circle cx="50" cy="50" r="14" stroke="rgba(94, 231, 255, 0.4)" stroke-width="2" fill="none"></circle>
+                <circle cx="50" cy="50" r="10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" fill="none"></circle>
+                <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
+            </g>
+        </svg>
+        <svg class="gear gear-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#cinematicGlow)">
+                <circle cx="50" cy="50" r="46" stroke="url(#gearGradient)" stroke-width="6" stroke-dasharray="4 4"></circle>
+                <circle cx="50" cy="50" r="43" stroke="rgba(94, 231, 255, 0.4)" stroke-width="1"></circle>
+                <circle cx="50" cy="50" r="28" stroke="url(#gearGradient)" stroke-width="4" stroke-dasharray="10 2"></circle>
+                <path d="M50 7 L50 93 M7 50 L93 50 M20 20 L80 80 M20 80 L80 20" stroke="url(#gearGradient)" stroke-width="1.5"></path>
+                <circle cx="50" cy="50" r="14" stroke="rgba(94, 231, 255, 0.4)" stroke-width="2" fill="none"></circle>
+                <circle cx="50" cy="50" r="10" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1" fill="none"></circle>
+                <circle cx="50" cy="50" r="4" fill="rgba(94, 231, 255, 0.5)"></circle>
+            </g>
+        </svg>
+    </div>
+
+    <!-- CABEÇALHO LIMPO -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                ExataMente<span>PRO</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO CARD COM REDES SOCIAIS RESTAURADAS NO TOPO -->
+        <section class="hero">
+            <div class="hero-card">
+                <div class="hero-cover">
+                    <img src="capa_ofc.png" alt="Capa visual do projeto ExataMente PRO">
+                </div>
+
+                <!-- Seção das Redes Sociais Completamente Centralizadas, Coloridas e Grandes -->
+                <div class="top-social-section">
+                    <span class="top-social-label">Siga-nos nas nossas redes sociais:</span>
+                    <div class="top-social-grid">
+                        <!-- Instagram -->
+                        <a href="https://instagram.com/exatamente_pro" target="_blank" class="top-social-card instagram" title="Instagram">
+                            <span class="top-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </span>
+                        </a>
+                        <!-- YouTube -->
+                        <a href="https://youtube.com/@exatamente_pro?si=-TBuxVCVJGnSp0Ut" target="_blank" class="top-social-card youtube" title="YouTube">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@exatamente_pro?is_from_webapp=1&sender_device=pc" target="_blank" class="top-social-card tiktok" title="TikTok">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/profile.php?id=61588697655925&locale=pt_BR" target="_blank" class="top-social-card facebook" title="Facebook">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <h1>A Engenharia por trás do <span>Hype</span>.</h1>
+                <h2 class="sub-headline"><span class="icone-x">❌</span> O fim da ilusão</h2>
+                <p>Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.</p>
+
+                <!-- Caixas com Tamanhos Reduzidos Conforme Solicitado -->
+                <div class="metrics">
+                    <div class="metric">
+                        <h2>+120 Mil</h2>
+                        <p>seguidores orgânicos.</p>
+                    </div>
+                    <div class="metric">
+                        <h2>+130 Mi</h2>
+                        <p>de visualizações.</p>
+                    </div>
+                    <div class="metric">
+                        <h2>100%</h2>
+                        <p>Mecânica Real.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: O MÉTODO -->
+        <section class="method-section">
+            <h2 class="section-title">Como funciona a <span>Engenharia Reversa</span></h2>
+            <div class="method-grid">
+                <div class="method-card">
+                    <span class="step">Fase 01</span>
+                    <h3>📱 A Ilusão</h3>
+                    <p>Mapeamos os vídeos mais virais da internet. Aquilo que o público geral olha e enxerga como "mágica", sorte ou truque barato de edição.</p>
+                </div>
+                <div class="method-card">
+                    <span class="step">Fase 02</span>
+                    <h3>⚙️ O Cálculo</h3>
+                    <p>Aplicamos os princípios estruturais, mecânica dos fluidos, tensão e óptica para descobrir qual é o algoritmo físico a operar nos bastidores.</p>
+                </div>
+                <div class="method-card">
+                    <span class="step">Fase 03</span>
+                    <h3>❌ O Fim da Ilusão</h3>
+                    <p>Traduzimos a ciência complexa para uma linguagem de alto impacto e provamos, por A+B, que não é mágica. É puramente Engenharia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PRODUTOS RECOMENDADOS (ESTILO NETFLIX CARROSSEL - SEM FORÇAR SIZES) -->
+        <section class="product-section" id="produtos">
+            <h2 class="section-title">Produtos <span>recomendados</span></h2>
+            
+            <!-- CATEGORIA 1: ELETRÔNICOS -->
+            <div class="category-row">
+                <h3 class="category-row-title">Eletrônicos</h3>
+                <div class="carousel-wrapper">
+                    <div class="carousel-container">
+                        
+                        <!-- Fone Pro 4 -->
+                        <div class="product-card">
+                            <div class="product-image-box">
+                                <img src="fone.webp" alt="Fone de Ouvido Bluetooth Pro 4">
+                            </div>
+                            <div>
+                                <span class="badge-bestseller">MAIS VENDIDO</span>
+                            </div>
+                            <h4 class="product-title">Fone De Ouvido Bluetooth Sem Fio Bateria de Longa Duração Pro 4 Branco</h4>
+                            <div class="product-rating">
+                                <span class="stars">4.3 ★★★★☆</span>
+                                <span class="rating-number">(9.943)</span>
+                            </div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 53,99</s></div>
+                                <div class="current-price-row">
+                                    <h2 class="product-price"><span>R$</span> 20<span>,52</span></h2>
+                                    <span class="discount-badge">61% OFF</span>
+                                </div>
+                                <div class="shipping-info">Chegará grátis amanhã</div>
+                            </div>
+                            <a href="https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-sem-fio-bateria-de-longa-duraco-pro-4-branco-conecta-rapido-fast-plug/p/MLB25263382?pdp_filters=item_id%3AMLB4617283695#polycard_client=wishlist&wid=MLB4617283695&sid=bookmarks" target="_blank" class="btn-buy">
+                                <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
+                                Comprar no Mercado Livre
+                            </a>
+                        </div>
+
+                        <!-- Kit T-Wolf -->
+                        <div class="product-card">
+                            <div class="product-image-box">
+                                <img src="teclado.webp" alt="Kit Gamer T-Wolf TF800">
+                            </div>
+                            <div>
+                                <span class="badge-bestseller" style="background-color: var(--meli-blue);">RECOMENDADO</span>
+                            </div>
+                            <h4 class="product-title">Kit De Teclado E Mouse Gamer T-Wolf TF800 4 Em 1 Preto RGB</h4>
+                            <div class="product-rating">
+                                <span class="stars">4.8 ★★★★★</span>
+                                <span class="rating-number">(1.240)</span>
+                            </div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 199,90</s></div>
+                                <div class="current-price-row">
+                                    <h2 class="product-price"><span>R$</span> 119<span>,90</span></h2>
+                                    <span class="discount-badge">40% OFF</span>
+                                </div>
+                                <div class="shipping-info">Frete grátis</div>
+                            </div>
+                            <a href="https://www.mercadolivre.com.br/kit-de-teclado-e-mouse-gamer-twolf-twolf-tf800-4-em-1-cor-usa-teclado-preto/p/MLB22843008?pdp_filters=item_id%3AMLB5271791320#polycard_client=wishlist&wid=MLB5271791320&sid=bookmarks" target="_blank" class="btn-buy">
+                                <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
+                                Comprar no Mercado Livre
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- CATEGORIA 2: FERRAMENTAS (COM IMAGENS CORRIGIDAS) -->
+            <div class="category-row">
+                <h3 class="category-row-title">Ferramentas</h3>
+                <div class="carousel-wrapper">
+                    <div class="carousel-container">
+                        
+                        <!-- Furadeira.webp -->
+                        <div class="product-card">
+                            <div class="product-image-box">
+                                <img src="furadeira.webp" alt="Furadeira de Impacto" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_634563-MLU72619426630_112023-F.webp'">
+                            </div>
+                            <div>
+                                <span class="badge-bestseller">POTÊNCIA</span>
+                            </div>
+                            <h4 class="product-title">Furadeira de Impacto Profissional e Parafusadeira com Maleta</h4>
+                            <div class="product-rating">
+                                <span class="stars">4.9 ★★★★★</span>
+                                <span class="rating-number">(1.854)</span>
+                            </div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 249,90</s></div>
+                                <div class="current-price-row">
+                                    <h2 class="product-price"><span>R$</span> 179<span>,90</span></h2>
+                                    <span class="discount-badge">28% OFF</span>
+                                </div>
+                                <div class="shipping-info">Frete grátis</div>
+                            </div>
+                            <a href="#" class="btn-buy" onclick="return false;">
+                                <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
+                                Comprar no Mercado Livre
+                            </a>
+                        </div>
+
+                        <!-- Maquita.webp -->
+                        <div class="product-card">
+                            <div class="product-image-box">
+                                <img src="maquita.webp" alt="Serra Mármore Maquita" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_752151-MLA74681651540_022024-F.webp'">
+                            </div>
+                            <div>
+                                <span class="badge-bestseller" style="background-color: var(--meli-blue);">FORÇA</span>
+                            </div>
+                            <h4 class="product-title">Serra Mármore de Alta Performance Tipo Maquita 1450W</h4>
+                            <div class="product-rating">
+                                <span class="stars">4.8 ★★★★★</span>
+                                <span class="rating-number">(943)</span>
+                            </div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 389,00</s></div>
+                                <div class="current-price-row">
+                               . <h2 class="product-price"><span>R$</span> 299<span>,00</span></h2>
+                                    <span class="discount-badge">23% OFF</span>
+                                </div>
+                                <div class="shipping-info">Chegará grátis amanhã</div>
+                            </div>
+                            <a href="#" class="btn-buy" onclick="return false;">
+                                <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
+                                Comprar no Mercado Livre
+                            </a>
+                        </div>
+
+                        <!-- Paquímetro Digital -->
+                        <div class="product-card">
+                            <div class="product-image-box">
+                                <img src="paquimetro.webp" alt="Paquímetro Digital" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_910762-MLB50025721111_052022-F.webp'">
+                            </div>
+                            <div>
+                                <span class="badge-bestseller" style="background-color: var(--meli-green);">PRECISÃO</span>
+                            </div>
+                            <h4 class="product-title">Paquímetro Digital de Aço Inox 150mm com Estojo</h4>
+                            <div class="product-rating">
+                                <span class="stars">4.7 ★★★★☆</span>
+                                <span class="rating-number">(3.421)</span>
+                            </div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 120,00</s></div>
+                                <div class="current-price-row">
+                                    <h2 class="product-price"><span>R$</span> 89<span>,90</span></h2>
+                                    <span class="discount-badge">25% OFF</span>
+                                </div>
+                                <div class="shipping-info">Chegará grátis amanhã</div>
+                            </div>
+                            <a href="#" class="btn-buy" onclick="return false;">
+                                <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
+                                Comprar no Mercado Livre
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO MANIFESTO -->
+        <section class="manifesto-section">
+            <div class="manifesto">
+                <h2>O Manifesto</h2>
+                <p>O ExataMente PRO transforma engenharia em entretenimento inteligente. Onde muitos enxergam "mágica", nós mostramos <strong>física, mecânica e ciência aplicada</strong>.</p>
+                <p style="margin-top:1rem;">Menos conteúdo genérico. Mais profundidade visual, clareza técnica e storytelling científico.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo" style="margin-bottom:.7rem;">
+            ExataMente<span>PRO</span>
+        </div>
+        <p>© 2026 ExataMente PRO — Engenharia, ciência e conteúdo visual.</p>
+    </footer>
+
+    <!-- SCRIPT DAS PARTÍCULAS EM BACKGROUND -->
+    <script>
+        const dataCanvas = document.getElementById('dataFlowCanvas');
+        const dataCtx = dataCanvas.getContext('2d');
+
+        function resizeCanvas() {
+            dataCanvas.width = window.innerWidth;
+            dataCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let particleCount = window.innerWidth < 768 ? 70 : 140; 
+        const connectionDist = 130;  
+        const mouseRepelRadius = 150; 
+        const repelForce = 5;        
+        const returnForce = 0.02;   
+
+        let particles = [];
+        let simMouse = { x: null, y: null, active: false };
+
+        const colors = {
+            cyan: "#5ee7ff",
+            red: "#ff1d3c"
+        };
+
+        class Particle {
+            constructor() {
+                this.homeX = Math.random() * dataCanvas.width;
+                this.homeY = Math.random() * dataCanvas.height;
+                this.x = this.homeX;
+                this.y = this.homeY;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2 + 1;
+                this.color = Math.random() > 0.2 ? colors.cyan : colors.red; 
+            }
+
+            draw() {
+                dataCtx.beginPath();
+                dataCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                dataCtx.fillStyle = this.color;
+                
+                if(this.color === colors.red) {
+                    dataCtx.shadowBlur = 8; dataCtx.shadowColor = colors.red;
+                } else {
+                    dataCtx.shadowBlur = 4; dataCtx.shadowColor = colors.cyan;
+                }
+                
+                dataCtx.fill();
+                dataCtx.shadowBlur = 0; 
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x + this.radius > dataCanvas.width || this.x - this.radius < 0) this.vx = -this.vx;
+                if (this.y + this.radius > dataCanvas.height || this.y - this.radius < 0) this.vy = -this.vy;
+
+                if (simMouse.active) {
+                    let dx = simMouse.x - this.x;
+                    let dy = simMouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouseRepelRadius) {
+                        let force = (mouseRepelRadius - distance) / mouseRepelRadius;
+                        let angle = Math.atan2(dy, dx);
+                        
+                        this.x -= Math.cos(angle) * force * repelForce;
+                        this.y -= Math.sin(angle) * force * repelForce;
+                    }
+                }
+
+                let dxHome = this.homeX - this.x;
+                let dyHome = this.homeY - this.y;
+                this.x += dxHome * returnForce;
+                this.y += dyHome * returnForce;
+            }
+        }
+
+        function initDataFlow() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function drawConnections() {
+            dataCtx.shadowBlur = 0; 
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p1 = particles[i];
+                    let p2 = particles[j];
+                    let dx = p1.x - p2.x;
+                    let dy = p1.y - p2.y;
+                    let dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < connectionDist) {
+                        let opacity = 1 - (dist / connectionDist);
+                        dataCtx.strokeStyle = `rgba(94, 231, 255, ${opacity * 0.15})`; 
+                        dataCtx.lineWidth = 0.5;
+                        dataCtx.beginPath();
+                        dataCtx.moveTo(p1.x, p1.y);
+                        dataCtx.lineTo(p2.x, p2.y);
+                        dataCtx.stroke();
+                    }
+                }
+            }
+        }
+
+        function loopDataFlow() {
+            dataCtx.clearRect(0, 0, dataCanvas.width, dataCanvas.height);
+
+            drawConnections();
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+            }
+
+            requestAnimationFrame(loopDataFlow);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            simMouse.x = e.clientX;
+            simMouse.y = e.clientY;
+            simMouse.active = true;
+        });
+        window.addEventListener('mouseleave', () => { simMouse.active = false; });
+        
+        window.addEventListener('touchstart', (e) => { 
+            simMouse.x = e.touches[0].clientX;
+            simMouse.y = e.touches[0].clientY;
+            simMouse.active = true;
+        }, {passive: true});
+        window.addEventListener('touchmove', (e) => { 
+            simMouse.x = e.touches[0].clientX;
+            simMouse.y = e.touches[0].clientY;
+        }, {passive: true});
+        window.addEventListener('touchend', () => { simMouse.active = false; });
+
+        initDataFlow();
+        loopDataFlow();
+
+        // SCRIPT DAS ENGRENAGENS
+        let isScrolling = false;
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    const scroll = window.scrollY;
+                    const gears = document.querySelectorAll('.gear');
+
+                    gears[0].style.transform = `translateY(${scroll * 0.08}px) rotate(${scroll * 0.15}deg)`;
+                    gears[1].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * -0.25}deg)`;
+                    
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
+        });
+    </script>
+</body>
+</html>
