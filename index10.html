@@ -106,7 +106,7 @@
     .hero-cover{ width:100%; overflow:hidden; border-radius:24px; margin-bottom:1.5rem; }
     .hero-cover img{ width:100%; display:block; object-fit:cover; }
     
-    .top-social-section { text-align: center; margin-bottom: 2.5rem; width: 100%; }
+    .top-social-section { text-align: center; margin-bottom: 2rem; width: 100%; }
     .top-social-label { font-size: 0.9rem; font-weight: 700; color: var(--text-soft); margin-bottom: 1rem; display: block; letter-spacing: 0.02em; }
     .top-social-grid { display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
     .top-social-card { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border: 1px solid var(--stroke); text-decoration: none; transition: all 0.3s ease; }
@@ -122,38 +122,18 @@
     .top-social-card.facebook { color: #1877F2; }
     .top-social-card.facebook:hover { border-color: var(--fb-color); background: rgba(24, 119, 242, 0.1); }
 
-    /* Ajuste para alinhar redes sociais no telemóvel */
-    @media(max-width: 480px){
-        .top-social-grid { gap: 0.8rem; }
-        .top-social-card { width: 48px; height: 48px; border-radius: 12px; }
-        .top-social-card svg { width: 24px; height: 24px; }
-    }
-
     .hero h1{ font-size:clamp(2.2rem, 6vw, 4.5rem); line-height:.95; font-weight:900; letter-spacing:-0.06em; margin-bottom:0.8rem; }
     .hero h1 span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .sub-headline { font-size:clamp(1.1rem, 3vw, 1.6rem); font-weight: 800; margin-bottom: 1.2rem; color: var(--text); letter-spacing: -0.02em; }
     .sub-headline .icone-x { color: #ff1d3c; }
-    .hero p{ max-width:800px; color:var(--text-soft); line-height:1.7; font-size:1.1rem; margin-bottom:2.5rem; }
+    .hero p{ max-width:800px; color:var(--text-soft); line-height:1.7; font-size:1.05rem; margin-bottom:1.5rem; }
     
-    /* Estrutura Flex Otimizada para Métricas Recheadas */
-    .metrics{ display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:2rem; }
-    .metric{ flex:1 1 30%; min-width:280px; position:relative; overflow:hidden; background:var(--card); border:1px solid var(--stroke); border-radius:24px; padding:1.8rem; backdrop-filter:blur(12px); display: flex; flex-direction: column; justify-content: flex-start;}
+    /* Estrutura Flex Otimizada para Métricas */
+    .metrics{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:2rem; }
+    .metric{ flex:1 1 30%; min-width:250px; position:relative; overflow:hidden; background:var(--card); border:1px solid var(--stroke); border-radius:20px; padding:1.2rem 1.5rem; backdrop-filter:blur(12px); }
     .metric::before{ content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(94,231,255,.08), transparent); }
-    
-    /* CORREÇÃO DO ACENTO CORTADO: padding-top e line-height adicionados */
-    .metric h2{ 
-        position:relative; 
-        font-size:clamp(1.8rem,4vw,2.5rem); 
-        line-height: 1.2; 
-        font-weight:900; 
-        margin-bottom:.8rem; 
-        padding-top: 0.1em; 
-        background: var(--gradient); 
-        -webkit-background-clip: text; 
-        -webkit-text-fill-color: transparent;
-    }
-    
-    .metric p{ position:relative; color:var(--text-soft); font-size:.95rem; line-height:1.6; }
+    .metric h2{ position:relative; font-size:clamp(1.6rem,3.5vw,2.2rem); line-height:1; font-weight:900; margin-bottom:.3rem; }
+    .metric p{ position:relative; color:var(--text-soft); font-size:.85rem; line-height:1.4; }
 
     /* =========================================
        O MÉTODO
@@ -163,18 +143,18 @@
 
     .method-section { max-width: 1200px; margin: 4rem auto 0; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; }
     .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .method-card { background: var(--card); border: 1px solid var(--stroke); border-radius: 24px; padding: 2.5rem 2rem; backdrop-filter: blur(10px); position: relative; text-align: left; }
+    .method-card { background: var(--card); border: 1px solid var(--stroke); border-radius: 24px; padding: 2.5rem 2rem; backdrop-filter: blur(10px); position: relative; text-align: center; }
     .method-card .step { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
-    .method-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; color: #fff;}
+    .method-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; }
     .method-card p { color: var(--text-soft); line-height: 1.7; font-size: 0.95rem; }
 
     /* =========================================
        O MANIFESTO
     ========================================= */
     .manifesto-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; }
-    .manifesto{ padding: 4rem 2.5rem; border-radius: 34px; background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid var(--stroke); backdrop-filter: blur(14px); text-align: left; }
-    .manifesto h2{ font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.05em; margin-bottom: 1.5rem; line-height: 1.1; color: #fff;}
-    .manifesto p{ color: var(--text-soft); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.2rem; }
+    .manifesto{ padding: 3.5rem 2rem; border-radius: 34px; background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid var(--stroke); backdrop-filter: blur(14px); text-align: center; }
+    .manifesto h2{ font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.05em; margin-bottom: 1.5rem; line-height: 1.1;}
+    .manifesto p{ color: var(--text-soft); line-height: 1.8; font-size: 1.05rem; max-width: 800px; margin: 0 auto 1rem; }
     .manifesto strong{ color: var(--primary); }
     
     footer{ padding: 3rem 1.2rem; text-align: center; position: relative; z-index: 10; border-top: 1px solid var(--stroke); color: var(--text-soft); font-size: .9rem; }
@@ -284,21 +264,12 @@
                 
                 <h1>A Engenharia por trás do <span>Hype</span>.</h1>
                 <h2 class="sub-headline"><span class="icone-x">❌</span> O fim da ilusão</h2>
-                <p>Explicando fenômenos virais, colapsos de projetos, ilusões do cotidiano e estruturas complexas com um visual cinematográfico, storytelling afiado e cálculos que não perdoam.</p>
+                <p>Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.</p>
 
                 <div class="metrics">
-                    <div class="metric">
-                        <h2>+130 MIL</h2>
-                        <p>Seguidores engajados. Uma comunidade construída com base no rigor científico e desconstrução de conteúdos manipulados, sem apelar a clickbaits vazios.</p>
-                    </div>
-                    <div class="metric">
-                        <h2>+126 MILHÕES</h2>
-                        <p>De visualizações. O alcance massivo que comprova: a física clássica aliada ao tom sarcástico gera um dos maiores impactos visuais de toda a internet.</p>
-                    </div>
-                    <div class="metric">
-                        <h2>100%</h2>
-                        <p>Engenharia Pura. O nosso único algoritmo é a ciência de materiais e a estática. Zero achismos. Toda a ilusão tem uma explicação exata nos bastidores.</p>
-                    </div>
+                    <div class="metric"><h2>+130k</h2><p>seguidores orgânicos.</p></div>
+                    <div class="metric"><h2>+126 Mi</h2><p>visualizações.</p></div>
+                    <div class="metric"><h2>100%</h2><p>Mecânica Real.</p></div>
                 </div>
             </div>
         </section>
@@ -309,17 +280,17 @@
                 <div class="method-card">
                     <span class="step">Fase 01</span>
                     <h3>📱 A Ilusão</h3>
-                    <p>Mapeamos os vídeos com maior tração e viralidade. Aquilo que o olhar leigo enxerga como "mágica", sorte divina ou um truque barato de edição invisível.</p>
+                    <p>Mapeamos os vídeos mais virais da internet. Aquilo que o público geral olha e enxerga como "mágica", sorte ou truque barato de edição.</p>
                 </div>
                 <div class="method-card">
                     <span class="step">Fase 02</span>
                     <h3>⚙️ O Cálculo</h3>
-                    <p>Aplicamos os princípios de mecânica computacional, estática de fluidos e distribuição de tensões para descobrir a equação física exata a operar no mundo real.</p>
+                    <p>Aplicamos os princípios estruturais, mecânica dos fluidos, tensão e óptica para descobrir qual é o algoritmo físico a operar nos bastidores.</p>
                 </div>
                 <div class="method-card">
                     <span class="step">Fase 03</span>
                     <h3>❌ O Fim da Ilusão</h3>
-                    <p>Traduzimos a literatura acadêmica para um storytelling visual explosivo, provando que não há milagre: é puramente o peso imperdoável da Engenharia.</p>
+                    <p>Traduzimos a ciência complexa para uma linguagem de alto impacto e provamos, por A+B, que não é mágica. É puramente Engenharia.</p>
                 </div>
             </div>
         </section>
@@ -327,10 +298,10 @@
         <section class="manifesto-section" id="manifesto">
             <div class="manifesto">
                 <h2>O que é o ExataMente PRO?</h2>
-                <p>A internet moderna é feita de fumo, espelhos e vídeos que desafiam a lógica. Nós somos o espelho que quebra. Nós somos a engenharia reversa do entretenimento.</p>
-                <p>O <strong>ExataMente PRO</strong> é um laboratório focado em desconstruir os maiores hypes, falhas estruturais e ilusões óticas da rede, munidos com os princípios da mecânica clássica e resistência dos materiais. Onde a maioria enxerga o inexplicável, nós enxergamos vetores de força, momento fletor e transferência de energia cinética.</p>
-                <p>Nós recusamos o formato entediante das salas de aula convencionais. Nós utilizamos a ciência exata, renderizações e um sarcasmo milimetricamente calculado para desmontar as falácias que enganam milhões, entregando entretenimento ancorado na verdade estrutural.</p>
-                <p><strong>A ilusão acaba e a gravidade assume.</strong></p>
+                <p>A internet é feita de ilusões; nós somos a engenharia reversa.</p>
+                <p>O <strong>ExataMente PRO</strong> é um laboratório digital focado em desconstruir os maiores hypes, vídeos virais e fenômenos absurdos da rede usando mecânica clássica, física e ciência aplicada. Onde o público geral enxerga "mágica", "sorte" ou truque de edição, nós entramos para revelar o algoritmo físico operando nos bastidores.</p>
+                <p>Nosso método não é acadêmico e entediante. Nós traduzimos conceitos complexos em um storytelling visual de alto impacto.</p>
+                <p><strong>Aqui, a ilusão acaba e a engenharia começa.</strong></p>
             </div>
         </section>
     </main>
