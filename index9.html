@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- SEO e Meta Tags -->
     <title>ExataMente PRO | A Engenharia por trás do Hype</title>
     <meta name="description" content="O laboratório digital que desmonta vídeos virais usando engenharia, física e ciência aplicada.">
     <meta property="og:title" content="ExataMente PRO">
     <meta property="og:description" content="A internet inteira acredita. Nós calculamos.">
     <meta property="og:type" content="website">
     
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -19,7 +21,7 @@
     ========================================= */
     *{ margin:0; padding:0; box-sizing:border-box; }
     html{ scroll-behavior:smooth; overflow-x: hidden; }
-    a:focus-visible { outline: 3px solid var(--primary); outline-offset: 4px; }
+    a:focus-visible, .btn-buy:focus-visible { outline: 3px solid var(--primary); outline-offset: 4px; }
 
     :root{
         --text:#f5f7ff;
@@ -28,6 +30,9 @@
         --stroke:rgba(255,255,255,.08);
         --primary:#5ee7ff;
         --gradient: linear-gradient(135deg, #ff1d3c 0%, #8b1fd3 50%, #315cff 100%);
+        --meli-blue: #3483FA;
+        --meli-green: #00a650;
+        --meli-orange: #F76300;
         /* Cores Redes Sociais */
         --ig-color: #c13584;
         --yt-color: #ff0000;
@@ -69,9 +74,11 @@
     .gears-bg{ position:fixed; inset:0; overflow:hidden; z-index:-3; pointer-events:none; }
     .gear{ position:absolute; will-change: transform; transform-origin: center center; }
     
+    /* Opacidades reduzidas drasticamente para manter a elegância e não roubar atenção */
     .gear-1{ width:450px; height:450px; left:-120px; top:5%; opacity: 0.15; }
     .gear-2{ width:250px; height:250px; right:280px; top:32%; opacity: 0.12; }
     .gear-3{ width:500px; height:500px; right:-150px; top:15%; opacity: 0.10; }
+    .gear-4{ width:200px; height:200px; left:65%; bottom:5%; opacity: 0.12; }
 
     /* =========================================
        TOPBAR FIXA
@@ -149,9 +156,60 @@
     .method-card p { color: var(--text-soft); line-height: 1.7; font-size: 0.95rem; }
 
     /* =========================================
+       CASOS ANALISADOS (Giro Visual de Portfólio)
+    ========================================= */
+    .cases-section { max-width: 1200px; margin: 5rem auto; padding: 0 1.2rem; position: relative; z-index: 10; }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .case-card { background: var(--card); border: 1px solid var(--stroke); border-radius: 28px; overflow: hidden; transition: .35s; }
+    .case-card:hover { transform: translateY(-6px); border-color: rgba(94,231,255,.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    
+    .case-thumb { height: 200px; background: linear-gradient(135deg, #10192f, #1b0f22); position: relative; overflow: hidden; }
+    .case-thumb::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at center, rgba(94,231,255,.15), transparent 70%); }
+    
+    .case-content { padding: 1.8rem; }
+    .case-badge { display: inline-block; padding: .4rem .8rem; border-radius: 999px; background: rgba(94,231,255,.1); color: var(--primary); font-size: .75rem; font-weight: 800; letter-spacing: .08em; margin-bottom: 1rem; }
+    .case-content h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: .8rem; line-height: 1.3; }
+    .case-content p { color: var(--text-soft); line-height: 1.6; font-size: .95rem; }
+
+    /* =========================================
+       PRODUTOS RECOMENDADOS (Netflix Carousel)
+    ========================================= */
+    .product-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; overflow: hidden;}
+    .category-row { margin-bottom: 3rem; width: 100%; position: relative; }
+    .category-row-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 1.2rem; padding-left: 0.6rem; border-left: 4px solid var(--primary); letter-spacing: -0.01em; }
+
+    .carousel-wrapper { width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; padding-bottom: 1.5rem; }
+    .carousel-container { display: flex; gap: 1.5rem; width: max-content; padding-right: 2rem; }
+
+    .product-card { width: 300px; background: var(--card); border: 1px solid var(--stroke); border-radius: 24px; padding: 1.5rem; backdrop-filter: blur(14px); transition: all 0.3s ease; display: flex; flex-direction: column; position: relative; }
+    .product-card:hover { transform: translateY(-5px); border-color: rgba(94, 231, 255, 0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.4); }
+    
+    .product-image-box { width: 100%; height: 210px; background: #ffffff; border-radius: 16px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+    .product-image-box img { max-width: 80%; max-height: 80%; object-fit: contain; transition: transform 0.4s ease; }
+    .product-card:hover .product-image-box img { transform: scale(1.08); }
+    
+    .badge-bestseller { background-color: var(--meli-orange); color: #fff; font-size: 0.65rem; font-weight: 800; padding: 0.25rem 0.5rem; border-radius: 4px; text-transform: uppercase; display: inline-block; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+    .product-title { font-size: 1rem; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 0.4rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 2.8rem; }
+    .product-rating { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem; font-size: 0.85rem; }
+    .stars { color: var(--meli-blue); font-weight: 700; }
+    .rating-number { color: var(--text-soft); }
+    
+    .product-pricing-area { margin-top: auto; margin-bottom: 1.2rem; display: flex; flex-direction: column; }
+    .old-price { color: #8c8c8c; text-decoration: line-through; font-size: 0.85rem; margin-bottom: 0.1rem; }
+    .current-price-row { display: flex; align-items: center; gap: 0.5rem; }
+    .product-price { font-size: 1.8rem; font-weight: 900; color: #fff; margin: 0; }
+    .product-price span { font-size: 0.85rem; font-weight: 600; color: var(--text-soft); vertical-align: super; }
+    .discount-badge { color: var(--meli-green); font-size: 0.9rem; font-weight: 600; }
+    .shipping-info { color: var(--meli-green); font-size: 0.85rem; font-weight: 700; margin-top: 0.4rem; }
+
+    .btn-buy { display: flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 1rem; border-radius: 14px; background: #FFE600; color: #2D3277; text-decoration: none; font-weight: 800; font-size: 0.95rem; transition: all 0.2s ease; }
+    .btn-buy:hover { background: #F3DB00; transform: scale(1.02); }
+    .btn-buy svg { width: 18px; height: 18px; fill: currentColor; }
+
+    /* =========================================
        O MANIFESTO
     ========================================= */
-    .manifesto-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; }
+    .manifesto-section { max-width: 1200px; margin: auto; padding: 0 1.2rem 4rem; position: relative; z-index: 10; width: 100%; }
     .manifesto{ padding: 3.5rem 2rem; border-radius: 34px; background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid var(--stroke); backdrop-filter: blur(14px); text-align: center; }
     .manifesto h2{ font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.05em; margin-bottom: 1.5rem; line-height: 1.1;}
     .manifesto p{ color: var(--text-soft); line-height: 1.8; font-size: 1.05rem; max-width: 800px; margin: 0 auto 1rem; }
@@ -162,8 +220,10 @@
 </head>
 <body>
 
+    <!-- A NOSSA FÍSICA VIVA -->
     <canvas id="dataFlowCanvas"></canvas>
 
+    <!-- AS NOSSAS ENGRENAGENS MECÂNICAS RECONECTADAS (Suaves/Opacas) -->
     <div class="gears-bg">
         <svg style="width:0;height:0;position:absolute;" aria-hidden="true">
             <defs>
@@ -227,17 +287,21 @@
         </svg>
     </div>
 
+    <!-- TOPBAR FIXA -->
     <header class="topbar">
         <div class="topbar-inner">
             <div class="logo">ExataMente<span>PRO</span></div>
             <nav class="nav">
                 <a href="#metodo">Método</a>
+                <a href="#analises">Análises</a>
+                <a href="#produtos">Recomendados</a>
                 <a href="#manifesto">Manifesto</a>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- HERO CARD -->
         <section class="hero">
             <div class="hero-card">
                 <div class="hero-cover">
@@ -247,15 +311,19 @@
                 <div class="top-social-section">
                     <span class="top-social-label">Siga-nos nas nossas redes sociais:</span>
                     <div class="top-social-grid">
+                        <!-- Instagram -->
                         <a href="https://instagram.com/exatamente_pro" target="_blank" class="top-social-card instagram" title="Instagram">
                             <span class="top-icon"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
                         </a>
+                        <!-- YouTube -->
                         <a href="https://youtube.com/@exatamente_pro?si=-TBuxVCVJGnSp0Ut" target="_blank" class="top-social-card youtube" title="YouTube">
                             <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                         </a>
+                        <!-- TikTok -->
                         <a href="https://www.tiktok.com/@exatamente_pro?is_from_webapp=1&sender_device=pc" target="_blank" class="top-social-card tiktok" title="TikTok">
                             <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
                         </a>
+                        <!-- Facebook -->
                         <a href="https://www.facebook.com/profile.php?id=61588697655925&locale=pt_BR" target="_blank" class="top-social-card facebook" title="Facebook">
                             <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
@@ -264,16 +332,18 @@
                 
                 <h1>A Engenharia por trás do <span>Hype</span>.</h1>
                 <h2 class="sub-headline"><span class="icone-x">❌</span> O fim da ilusão</h2>
-                <p>Explicando fenômenos virais, falhas estruturais, ilusões do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.</p>
+                <p>Explicando fenômenos virais, falhas estruturais, illusions do cotidiano e engenharia aplicada com visual cinematográfico, storytelling técnico e ciência real.</p>
 
+                <!-- Métricas Dinâmicas (Móvel um abaixo do outro, Desktop Lado a Lado) -->
                 <div class="metrics">
-                    <div class="metric"><h2>+130k</h2><p>seguidores orgânicos.</p></div>
-                    <div class="metric"><h2>+126 Mi</h2><p>visualizações.</p></div>
+                    <div class="metric"><h2>+120 Mil</h2><p>seguidores orgânicos.</p></div>
+                    <div class="metric"><h2>+130 Mi</h2><p>visualizações.</p></div>
                     <div class="metric"><h2>100%</h2><p>Mecânica Real.</p></div>
                 </div>
             </div>
         </section>
 
+        <!-- SEÇÃO: O MÉTODO -->
         <section class="method-section" id="metodo">
             <h2 class="section-title">Como funciona a <span>Engenharia Reversa</span></h2>
             <div class="method-grid">
@@ -295,6 +365,115 @@
             </div>
         </section>
 
+        <!-- SEÇÃO: CASOS ANALISADOS -->
+        <section class="cases-section" id="analises">
+            <h2 class="section-title">Casos <span>Analisados</span></h2>
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-thumb"></div>
+                    <div class="case-content">
+                        <div class="case-badge">ILUSÃO ÓPTICA</div>
+                        <h3>A escada que parecia impossível</h3>
+                        <p>O cérebro interpreta perspectiva relativa de forma incorreta quando perde referências espaciais.</p>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-thumb"></div>
+                    <div class="case-content">
+                        <div class="case-badge">MECÂNICA DOS FLUIDOS</div>
+                        <h3>A água "infinita" da internet</h3>
+                        <p>O efeito viral era apenas sifonamento combinado com pressão hidrostática.</p>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-thumb"></div>
+                    <div class="case-content">
+                        <div class="case-badge">FALHA ESTRUTURAL</div>
+                        <h3>A ponte que colapsou em segundos</h3>
+                        <p>Vibração ressonante combinada com distribuição incorreta de cargas dinâmicas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: PRODUTOS RECOMENDADOS -->
+        <section class="product-section" id="produtos">
+            <h2 class="section-title">Produtos <span>recomendados</span></h2>
+            
+            <div class="category-row">
+                <h3 class="category-row-title">Eletrônicos</h3>
+                <div class="carousel-wrapper">
+                    <div class="carousel-container">
+                        
+                        <div class="product-card">
+                            <div class="product-image-box"><img src="fone.webp" alt="Fone Pro 4"></div>
+                            <div><span class="badge-bestseller">MAIS VENDIDO</span></div>
+                            <h4 class="product-title">Fone De Ouvido Bluetooth Sem Fio Bateria de Longa Duração Pro 4</h4>
+                            <div class="product-rating"><span class="stars">4.3 ★★★★☆</span><span class="rating-number">(9.943)</span></div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 53,99</s></div>
+                                <div class="current-price-row"><h2 class="product-price"><span>R$</span> 20<span>,52</span></h2><span class="discount-badge">61% OFF</span></div>
+                                <div class="shipping-info">Chegará grátis amanhã</div>
+                            </div>
+                            <a href="https://www.mercadolivre.com.br/fone-de-ouvido-bluetooth-sem-fio-bateria-de-longa-duraco-pro-4-branco-conecta-rapido-fast-plug/p/MLB25263382?pdp_filters=item_id%3AMLB4617283695#polycard_client=wishlist&wid=MLB4617283695&sid=bookmarks" target="_blank" class="btn-buy">
+                                <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg> Comprar no Mercado Livre
+                            </a>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image-box"><img src="teclado.webp" alt="Kit Gamer T-Wolf TF800"></div>
+                            <div><span class="badge-bestseller" style="background-color: var(--meli-blue);">RECOMENDADO</span></div>
+                            <h4 class="product-title">Kit De Teclado E Mouse Gamer T-Wolf TF800 4 Em 1 Preto RGB</h4>
+                            <div class="product-rating"><span class="stars">4.8 ★★★★★</span><span class="rating-number">(1.240)</span></div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 199,90</s></div>
+                                <div class="current-price-row"><h2 class="product-price"><span>R$</span> 119<span>,90</span></h2><span class="discount-badge">40% OFF</span></div>
+                                <div class="shipping-info">Frete grátis</div>
+                            </div>
+                            <a href="https://www.mercadolivre.com.br/kit-de-teclado-e-mouse-gamer-twolf-twolf-tf800-4-em-1-cor-usa-teclado-preto/p/MLB22843008?pdp_filters=item_id%3AMLB5271791320#polycard_client=wishlist&wid=MLB5271791320&sid=bookmarks" target="_blank" class="btn-buy">
+                                <svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg> Comprar no Mercado Livre
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-row">
+                <h3 class="category-row-title">Ferramentas</h3>
+                <div class="carousel-wrapper">
+                    <div class="carousel-container">
+                        
+                        <div class="product-card">
+                            <div class="product-image-box"><img src="furadeira.webp" alt="Furadeira" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_634563-MLU72619426630_112023-F.webp'"></div>
+                            <div><span class="badge-bestseller">POTÊNCIA</span></div>
+                            <h4 class="product-title">Furadeira de Impacto Profissional e Parafusadeira com Maleta</h4>
+                            <div class="product-rating"><span class="stars">4.9 ★★★★★</span><span class="rating-number">(1.854)</span></div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 249,90</s></div>
+                                <div class="current-price-row"><h2 class="product-price"><span>R$</span> 179<span>,90</span></h2><span class="discount-badge">28% OFF</span></div>
+                                <div class="shipping-info">Frete grátis</div>
+                            </div>
+                            <a href="#" class="btn-buy" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg> Comprar no Mercado Livre</a>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image-box"><img src="maquita.webp" alt="Serra Mármore" onerror="this.src='https://http2.mlstatic.com/D_NQ_NP_2X_752151-MLA74681651540_022024-F.webp'"></div>
+                            <div><span class="badge-bestseller" style="background-color: var(--meli-blue);">FORÇA</span></div>
+                            <h4 class="product-title">Serra Mármore de Alta Performance Tipo Maquita 1450W</h4>
+                            <div class="product-rating"><span class="stars">4.8 ★★★★★</span><span class="rating-number">(943)</span></div>
+                            <div class="product-pricing-area">
+                                <div class="old-price"><s>R$ 389,00</s></div>
+                                <div class="current-price-row"><h2 class="product-price"><span>R$</span> 299<span>,00</span></h2><span class="discount-badge">23% OFF</span></div>
+                                <div class="shipping-info">Chegará grátis amanhã</div>
+                            </div>
+                            <a href="#" class="btn-buy" onclick="return false;"><svg viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg> Comprar no Mercado Livre</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO MANIFESTO -->
         <section class="manifesto-section" id="manifesto">
             <div class="manifesto">
                 <h2>O que é o ExataMente PRO?</h2>
@@ -311,6 +490,7 @@
         <p>© 2026 ExataMente PRO — Engenharia, ciência e conteúdo visual.</p>
     </footer>
 
+    <!-- SCRIPT DA INTERAÇÃO FÍSICA -->
     <script>
         const dataCanvas = document.getElementById('dataFlowCanvas');
         const dataCtx = dataCanvas.getContext('2d');
@@ -406,6 +586,7 @@
 
         initDataFlow(); loopDataFlow();
 
+        // ROTAÇÃO SÍNCRONA DAS ENGRENAGENS REALINHAS AO SCROLL
         let isScrolling = false;
         window.addEventListener('scroll', () => {
             if (!isScrolling) {
@@ -413,9 +594,9 @@
                     const scroll = window.scrollY;
                     const gears = document.querySelectorAll('.gear');
 
-                    if(gears[0]) gears[0].style.transform = `translateY(${scroll * 0.08}px) rotate(${scroll * 0.15}deg)`;
-                    if(gears[1]) gears[1].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * -0.25}deg)`;
-                    if(gears[2]) gears[2].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * 0.12}deg)`;
+                    gears[0].style.transform = `translateY(${scroll * 0.08}px) rotate(${scroll * 0.15}deg)`;
+                    gears[1].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * -0.25}deg)`;
+                    gears[2].style.transform = `translateY(${scroll * 0.12}px) rotate(${scroll * 0.12}deg)`;
                     
                     isScrolling = false;
                 });
