@@ -96,7 +96,7 @@
     /* =========================================
        HERO CARD + REDES SOCIAIS CENTRALIZADAS
     ========================================= */
-    .hero{ max-width:1200px; margin:auto; padding:6rem 1.2rem 2rem; position: relative; z-index: 10; width: 100%; }
+    .hero{ max-width:1200px; margin:auto; padding:6rem 1.2rem 2rem; position: relative; z-index: 10; width: 100%; text-align: center; }
     .hero-card{
         position:relative; overflow:hidden; border-radius:36px;
         background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
@@ -106,7 +106,7 @@
     .hero-cover{ width:100%; overflow:hidden; border-radius:24px; margin-bottom:1.5rem; }
     .hero-cover img{ width:100%; display:block; object-fit:cover; }
     
-    .top-social-section { text-align: center; margin-bottom: 2.5rem; width: 100%; }
+    .top-social-section { margin-bottom: 2.5rem; width: 100%; }
     .top-social-label { font-size: 0.9rem; font-weight: 700; color: var(--text-soft); margin-bottom: 1rem; display: block; letter-spacing: 0.02em; }
     .top-social-grid { display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
     .top-social-card { width: 60px; height: 60px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border: 1px solid var(--stroke); text-decoration: none; transition: all 0.3s ease; }
@@ -133,11 +133,11 @@
     .hero h1 span{ background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .sub-headline { font-size:clamp(1.1rem, 3vw, 1.6rem); font-weight: 800; margin-bottom: 1.2rem; color: var(--text); letter-spacing: -0.02em; }
     .sub-headline .icone-x { color: #ff1d3c; }
-    .hero p{ max-width:800px; color:var(--text-soft); line-height:1.7; font-size:1.1rem; margin-bottom:2.5rem; }
+    .hero p{ max-width:800px; color:var(--text-soft); line-height:1.7; font-size:1.1rem; margin: 0 auto 2.5rem; }
     
-    /* Estrutura Flex Otimizada para Métricas Recheadas */
+    /* Estrutura Flex Otimizada para Métricas Recheadas (CENTRALIZADAS) */
     .metrics{ display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:2rem; }
-    .metric{ flex:1 1 30%; min-width:280px; position:relative; overflow:hidden; background:var(--card); border:1px solid var(--stroke); border-radius:24px; padding:1.8rem; backdrop-filter:blur(12px); display: flex; flex-direction: column; justify-content: flex-start;}
+    .metric{ flex:1 1 30%; min-width:280px; position:relative; overflow:hidden; background:var(--card); border:1px solid var(--stroke); border-radius:24px; padding:1.8rem; backdrop-filter:blur(12px); display: flex; flex-direction: column; align-items: center; text-align: center; }
     .metric::before{ content:''; position:absolute; inset:0; background:linear-gradient(135deg, rgba(94,231,255,.08), transparent); }
     
     /* CORREÇÃO DO ACENTO CORTADO: padding-top e line-height adicionados */
@@ -158,12 +158,14 @@
     /* =========================================
        O MÉTODO
     ========================================= */
-    .section-title { font-size: clamp(1.8rem,5vw,3rem); font-weight: 900; letter-spacing: -0.06em; margin-bottom: 2rem; line-height:1.1; }
+    .section-title { font-size: clamp(1.8rem,5vw,3rem); font-weight: 900; letter-spacing: -0.06em; margin-bottom: 2rem; line-height:1.1; text-align: center; }
     .section-title span { color: var(--primary); }
 
     .method-section { max-width: 1200px; margin: 4rem auto 0; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; }
     .method-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .method-card { background: var(--card); border: 1px solid var(--stroke); border-radius: 24px; padding: 2.5rem 2rem; backdrop-filter: blur(10px); position: relative; text-align: left; }
+    
+    /* CARDS DO MÉTODO (CENTRALIZADOS) */
+    .method-card { background: var(--card); border: 1px solid var(--stroke); border-radius: 24px; padding: 2.5rem 2rem; backdrop-filter: blur(10px); position: relative; text-align: center; }
     .method-card .step { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: var(--primary); letter-spacing: 0.1em; margin-bottom: 1rem; display: block; }
     .method-card h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; color: #fff;}
     .method-card p { color: var(--text-soft); line-height: 1.7; font-size: 0.95rem; }
@@ -172,9 +174,11 @@
        O MANIFESTO
     ========================================= */
     .manifesto-section { max-width: 1200px; margin: 4rem auto; padding: 0 1.2rem; position: relative; z-index: 10; width: 100%; }
-    .manifesto{ padding: 4rem 2.5rem; border-radius: 34px; background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid var(--stroke); backdrop-filter: blur(14px); text-align: left; }
+    
+    /* MANIFESTO (CENTRALIZADO) */
+    .manifesto{ padding: 4rem 2.5rem; border-radius: 34px; background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid var(--stroke); backdrop-filter: blur(14px); text-align: center; }
     .manifesto h2{ font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -0.05em; margin-bottom: 1.5rem; line-height: 1.1; color: #fff;}
-    .manifesto p{ color: var(--text-soft); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.2rem; }
+    .manifesto p{ color: var(--text-soft); line-height: 1.8; font-size: 1.1rem; margin: 0 auto 1.2rem; max-width: 850px; }
     .manifesto strong{ color: var(--primary); }
     
     footer{ padding: 3rem 1.2rem; text-align: center; position: relative; z-index: 10; border-top: 1px solid var(--stroke); color: var(--text-soft); font-size: .9rem; }
